@@ -23,7 +23,13 @@ export default function PostDashboard() {
   });
   const fetchPosts = async ({ pageParam }: { pageParam: number }) => {
     let res = await fetch(
-      `http://localhost:3000/posts?cat=${filterRef.current.category}&sort=${filterRef.current.sortBy}&page=${pageParam}&user_id=${userId}&self=${filterRef.current.selfPosted}&q=${filterRef.current.searchKeyword}`,
+      `${import.meta.env.VITE_SERVER_API_URL}/posts?cat=${
+        filterRef.current.category
+      }&sort=${
+        filterRef.current.sortBy
+      }&page=${pageParam}&user_id=${userId}&self=${
+        filterRef.current.selfPosted
+      }&q=${filterRef.current.searchKeyword}`,
       {
         headers: {
           "Content-Type": "application/json",

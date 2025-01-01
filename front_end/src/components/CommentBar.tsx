@@ -30,7 +30,7 @@ export default function CommentBar({ postId, replyId }: props) {
       //Refresh token if expired and get current session
       const { data } = await supabase.auth.getSession();
       const res = await axios.post(
-        `http://localhost:3000/auth_req/create_comment`,
+        `${import.meta.env.VITE_SERVER_API_URL}/auth_req/create_comment`,
         {
           Body: input,
           AuthorID: userId,

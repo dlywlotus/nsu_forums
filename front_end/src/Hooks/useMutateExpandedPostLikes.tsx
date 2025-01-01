@@ -21,11 +21,11 @@ const useMutateExpandedPostLikes = () => {
   const mutation = useMutation({
     mutationFn: async ({ postId, isLiked }: mutationProps) => {
       if (isLiked) {
-        await axios.delete(`http://localhost:3000/likes`, {
+        await axios.delete(`${import.meta.env.VITE_SERVER_API_URL}/likes`, {
           data: { userId, postId },
         });
       } else {
-        await axios.post(`http://localhost:3000/likes`, {
+        await axios.post(`${import.meta.env.VITE_SERVER_API_URL}/likes`, {
           userId,
           postId,
         });

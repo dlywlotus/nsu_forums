@@ -43,17 +43,20 @@ export default function CreatePostPage() {
       const jwtToken = session?.access_token;
 
       //create post
-      const res = await fetch("http://localhost:3000/auth_req/create_post", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${jwtToken}`,
-        },
-        body: JSON.stringify({
-          ...formData,
-          authorID: userId,
-        }),
-      });
+      const res = await fetch(
+        `${import.meta.env.VITE_SERVER_API_URL}/auth_req/create_post`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${jwtToken}`,
+          },
+          body: JSON.stringify({
+            ...formData,
+            authorID: userId,
+          }),
+        }
+      );
 
       if (!res.ok) throw new Error();
 

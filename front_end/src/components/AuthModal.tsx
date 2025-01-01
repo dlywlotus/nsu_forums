@@ -27,7 +27,7 @@ export default function AuthModal({}: props) {
   };
 
   const createUser = async (userData: { id: string; username: string }) => {
-    const res = await fetch("http://localhost:3000/signup", {
+    const res = await fetch(`${import.meta.env.VITE_SERVER_API_URL}/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

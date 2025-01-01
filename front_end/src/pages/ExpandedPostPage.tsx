@@ -21,7 +21,7 @@ export default function ExpandedPostPage({}: props) {
 
   const fetchPost = async () => {
     const res = await axios.get(
-      `http://localhost:3000/post/${postId}?user_id=${userId}`
+      `${import.meta.env.VITE_SERVER_API_URL}/post/${postId}?user_id=${userId}`
     );
     const data: postData = res.data;
     return data;
