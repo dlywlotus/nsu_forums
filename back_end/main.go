@@ -53,5 +53,5 @@ func main() {
 
 	r.POST("/signup", controllers.HandleUserSignUp)
 
-	r.Run() //
+	r.Run() //runs on PORT from .env
 }
