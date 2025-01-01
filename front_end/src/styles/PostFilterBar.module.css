@@ -51,9 +51,10 @@
   font-weight: var(--fw-semi-bold);
 }
 
-@media (width < 765px) {
+@media (width < 850px) {
   .container {
     font-size: var(--fs-300);
+    flex-direction: column;
   }
 
   .form_group {
