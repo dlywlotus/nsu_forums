@@ -7,7 +7,7 @@ type props = {};
 
 export default function UserButton({}: props) {
   const navigate = useNavigate();
-  const { userId, isLoggedIn } = useUser();
+  const { isLoggedIn } = useUser();
 
   //TODO
   const openProfile = async () => {
