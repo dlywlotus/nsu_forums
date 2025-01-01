@@ -60,5 +60,5 @@ func main() {
 		port = "8080" // Default port if not set
 	}
 
-	r.Run(":3000")
+	r.Run(":" + port)
 }
