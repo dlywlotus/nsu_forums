@@ -1,0 +1,4 @@
+.container {
+  border: 1px solid var(--clr-primary-700);
+  border-radius: 0.75rem;
+}

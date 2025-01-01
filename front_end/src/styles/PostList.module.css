@@ -1,0 +1,12 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.end_of_page {
+  text-align: center;
+  color: var(--clr-primary-700);
+  font-weight: var(--fw-semi-bold);
+}

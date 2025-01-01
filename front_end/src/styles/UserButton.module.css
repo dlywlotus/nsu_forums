@@ -1,0 +1,13 @@
+.btn_icon {
+  color: var(--clr-primary-700);
+  background-color: transparent;
+  border-radius: 50%;
+  border: none;
+  transition: color 0.2s ease;
+  font-size: var(--fs-500);
+}
+
+.btn_icon:focus-within,
+.btn_icon:hover {
+  color: var(--clr-accent-400);
+}

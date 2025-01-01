@@ -1,0 +1,22 @@
+.container {
+  width: min(400px, 80vw);
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  justify-content: center;
+  color: var(--clr-neutral-900);
+  background-color: var(--clr-neutral-100);
+  position: relative;
+}
+
+.container input {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  border-bottom: 1px solid var(--clr-primary-700);
+}
+
+.container input:focus-within {
+  border-bottom: 1px solid var(--clr-accent-400);
+}

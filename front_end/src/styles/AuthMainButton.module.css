@@ -1,0 +1,16 @@
+.btn_authenticate {
+  align-self: flex-end;
+  background-color: var(--clr-primary-700);
+  color: var(--clr-neutral-100);
+  border: 2px solid var(--clr-primary-700);
+  padding: 0.5rem 3.5rem;
+  transition: background-color 0.4s ease, border 0.4s ease, color 0.4s ease;
+  border-radius: 1rem;
+  font-size: var(--fs-400);
+  margin-block: 2rem 1rem;
+}
+
+.btn_authenticate:hover {
+  background-color: var(--clr-accent-400);
+  border: 2px solid var(--clr-accent-400);
+}

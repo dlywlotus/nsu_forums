@@ -1,0 +1,18 @@
+.container {
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--clr-neutral-100);
+  border-bottom: 1px solid var(--clr-primary-700);
+  padding: 1rem;
+  width: 100%;
+  top: 0;
+  z-index: 2;
+  height: 65px;
+}
+
+.nav_btns {
+  display: flex;
+  gap: 1rem;
+}
