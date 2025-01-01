@@ -1,6 +1,8 @@
 package main
 
 import (
+	"os"
+
 	"github.com/dlywlotus/go-crud/controllers"
 	"github.com/dlywlotus/go-crud/initialisers"
 	"github.com/dlywlotus/go-crud/middleware"
@@ -53,5 +55,10 @@ func main() {
 
 	r.POST("/signup", controllers.HandleUserSignUp)
 
-	r.Run() //runs on PORT from .env
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080" // Default port if not set
+	}
+
+	r.Run(":" + port)
 }
