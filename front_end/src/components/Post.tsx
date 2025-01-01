@@ -42,7 +42,7 @@ export default function Post({ postContent, isExpanded }: props) {
         <span className={styles.time}>{timeElapsed} ago</span>
       </div>
       <div className={styles.post_title}>{postContent.Title}</div>
-      <div className={styles.post_body}>{postContent.Body}</div>
+      <p className={styles.post_body}>{postContent.Body}</p>
       <div className={styles.social_counters}>
         <PostLikes
           postId={postContent.ID}
