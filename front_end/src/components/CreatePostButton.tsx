@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import styles from "../styles/createPostButton.module.css";
+import styles from "../styles/CreatePostButton.module.css";
 import { useMediaQuery } from "react-responsive";
 import { useUser } from "../Hooks/useUser";
 
