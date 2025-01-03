@@ -38,7 +38,7 @@ export default function UserButton({}: props) {
   } else {
     return (
       <button className={styles.btn_icon} onClick={goToAuth}>
-        <i className='fa-solid fa-right-to-bracket'></i>
+        Login
       </button>
     );
   }

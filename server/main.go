@@ -11,9 +11,9 @@ import (
 )
 
 func init() {
+	// Un-comment this if not deploying on render
+	initialisers.LoadEnvVariables()
 	initialisers.ConnectToDb()
-	//Un-comment this if not deploying on render
-	// initialisers.LoadEnvVariables()
 }
 
 func main() {

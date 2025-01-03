@@ -4,7 +4,8 @@
   border-radius: 50%;
   border: none;
   transition: color 0.2s ease;
-  font-size: var(--fs-500);
+  font-size: var(--fs-400);
+  font-weight: var(--fw-semi-bold);
 }
 
 .btn_icon:focus-within,

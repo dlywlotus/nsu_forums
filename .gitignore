@@ -24,3 +24,7 @@ dist-ssr
 *.sln
 *.sw?
 *.exe
+
+# Air config and temporary files
+.air.toml
+tmp/

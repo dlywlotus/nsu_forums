@@ -35,13 +35,11 @@ export default function AuthModal({}: props) {
       body: JSON.stringify(userData),
     });
     if (!res.ok) {
-      console.log(res);
       throw new Error("Error creating user");
     }
   };
 
   const onLogin = async () => {
-    console.log("logging in...........");
     setIsLoading(true);
     let { error } = await supabase.auth.signInWithPassword({
       email: input.email,

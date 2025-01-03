@@ -53,7 +53,7 @@ export default function PostDashboard() {
       getNextPageParam: lastPage => lastPage.nextPage,
       enabled: userId != null, //still works when userId is ""
     });
-  console.log(data);
+
   return (
     <>
       <PostFilterBar filterRef={filterRef} refetch={refetch} />
