@@ -1,5 +1,5 @@
 .container {
-  border: 1px solid var(--clr-primary-700);
+  box-shadow: 0 4px 8px rgba(0, 59, 92, 0.1), 0 2px 4px rgba(0, 59, 92, 0.05);
   padding: 1rem;
   border-radius: 0.75rem;
 }
@@ -15,16 +15,17 @@
 .body_input,
 .form select {
   display: block;
-  border-radius: 0.5rem;
-  border: 1px solid var(--clr-neutral-900);
+  border-radius: 0.75rem;
+  border: 1px solid var(--clr-neutral-200);
+  background-color: var(--clr-body);
   margin-block: 0.5rem;
   padding: 0.5rem;
+  outline: none;
 }
 
 .title_input:focus-within,
-.body_input:focus-within,
-.form select:focus-within {
-  border: 1px solid var(--clr-primary-700);
+.body_input:focus-within {
+  box-shadow: 0 2px 6px rgba(18, 22, 25, 0.1);
 }
 
 .title_input,
@@ -41,8 +42,13 @@
   min-height: 138px;
 }
 
+.form select:hover {
+  color: var(--clr-accent-400);
+}
+
 .form select {
-  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 59, 92, 0.1), 0 1px 3px rgba(0, 59, 92, 0.05);
+  transition: color 0.3s ease;
 }
 
 .bottom_row {
@@ -52,19 +58,22 @@
 }
 
 .form button {
-  border: 2px solid var(--clr-primary-700);
-  background-color: transparent;
-  color: var(--clr-primary-700);
-  font-weight: var(--fw-semi-bold);
-  border-radius: 0.75rem;
-  width: 120px;
-  transition: color 0.2s ease, border-color 0.2s ease;
+  background-color: var(--clr-primary-700);
+  border: none;
+  color: #d0d0d0;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
 }
 
-.form button:hover,
-.form button:focus-within {
-  color: var(--clr-accent-400);
-  border-color: var(--clr-accent-400);
+.form button:hover {
+  background-color: var(--clr-accent-400);
+}
+
+.form button:focus {
+  outline: none;
 }
 
 .err {

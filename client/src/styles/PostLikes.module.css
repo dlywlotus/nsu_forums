@@ -7,6 +7,7 @@
   border-radius: 0.75rem;
   border: none;
   gap: 0.5rem;
+  transition: color 0.3s ease;
 }
 
 .btn_like[data-liked="true"] {

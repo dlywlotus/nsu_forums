@@ -1,0 +1,41 @@
+.modal {
+  background-color: var(--clr-body);
+  position: absolute;
+  top: calc(65px + 6px); /*height of header + gap for shadow*/
+  right: 0;
+  opacity: 0;
+  transition: opacity 0.1s ease-in;
+  border-radius: 0.75rem;
+  padding-block: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 59, 92, 0.1), 0 2px 4px rgba(0, 59, 92, 0.05);
+  display: grid;
+  place-items: start;
+}
+
+.modal[data-open="true"] {
+  opacity: 1;
+}
+
+.modal > * {
+  padding: 0.5rem 1rem;
+}
+
+.modal > *:hover {
+  color: var(--clr-accent-400);
+}
+
+.modal a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.dark_mode {
+  display: flex;
+  gap: 4rem;
+  align-items: center;
+}
+
+.btn_logout {
+  border: none;
+  background-color: var(--clr-body);
+}

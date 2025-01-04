@@ -5,9 +5,10 @@
   flex-direction: column;
   padding: 2rem;
   justify-content: center;
-  color: var(--clr-neutral-900);
-  background-color: var(--clr-neutral-100);
+  color: var(--clr-text);
+  background-color: var(--clr-body);
   position: relative;
+  transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 .container input {

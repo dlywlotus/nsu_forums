@@ -10,10 +10,14 @@ import { UserProvider } from "./Hooks/useUser";
 import CreatePostPage from "./pages/CreatePostPage";
 import MainHeader from "./components/MainHeader";
 import PostDashboardPage from "./pages/PostDashboardPage";
+import useTheme from "./Hooks/useTheme";
+import ProfilePage from "./pages/ProfilePage";
 
 const queryClient = new QueryClient();
 
 const Layout = () => {
+  useTheme();
+
   return (
     <>
       <MainHeader />
@@ -41,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "create",
         element: <CreatePostPage />,
+      },
+      {
+        path: "profile",
+        element: <ProfilePage />,
       },
     ],
   },

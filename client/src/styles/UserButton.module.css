@@ -3,9 +3,10 @@
   background-color: transparent;
   border-radius: 50%;
   border: none;
-  transition: color 0.2s ease;
+  transition: color 0.3s ease;
   font-size: var(--fs-400);
   font-weight: var(--fw-semi-bold);
+  position: relative;
 }
 
 .btn_icon:focus-within,

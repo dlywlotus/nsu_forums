@@ -1,7 +1,7 @@
 .btn_authenticate {
   align-self: flex-end;
   background-color: var(--clr-primary-700);
-  color: var(--clr-neutral-100);
+  color: #f0f0f0;
   border: 2px solid var(--clr-primary-700);
   padding: 0.5rem 3.5rem;
   transition: background-color 0.4s ease, border 0.4s ease, color 0.4s ease;

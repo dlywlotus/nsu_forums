@@ -5,7 +5,7 @@
   background-color: var(--clr-error);
   border-radius: 0.75rem;
   padding: 0.5rem 1.25rem;
-  color: var(--clr-neutral-100);
+  color: #f0f0f0;
   font-size: var(--fs-300);
   opacity: 0;
   transform: translateY(0);

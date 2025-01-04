@@ -1,17 +1,14 @@
 .btn_create {
-  border: 1px solid var(--clr-primary-700);
+  border: none;
   color: var(--clr-primary-700);
   font-weight: var(--fw-semi-bold);
   border-radius: 0.75rem;
-  padding: 0.25rem 1rem;
-  transition: color 0.2s ease, border-color 0.2s ease;
+  transition: color 0.3s ease, background-color 0.3s ease;
   background-color: transparent;
 }
 
-.btn_create:hover,
-.btn_create:focus-within {
+.btn_create:hover {
   color: var(--clr-accent-400);
-  border-color: var(--clr-accent-400);
 }
 
 .btn_create span {

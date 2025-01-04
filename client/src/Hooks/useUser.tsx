@@ -28,7 +28,6 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
         console.error("No session found");
       } else {
         setUserState({ isLoggedIn: true, userId: data.session.user.id });
-        console.log({ isLoggedIn: true, userId: data.session.user.id });
       }
     };
     checkUser();
