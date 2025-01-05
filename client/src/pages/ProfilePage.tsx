@@ -31,6 +31,11 @@ export default function ProfilePage() {
     try {
       setIsLoading(true);
       const croppedImgBlob: any = await getCroppedImageBlob(img, crop);
+
+      setUploadedImg(URL.createObjectURL(croppedImgBlob));
+      setIsCropping(false);
+      setIsLoading(false);
+
       //upload new image / overwrite old one
       const { error: storageError } = await supabase.storage
         .from("profile_icons")
@@ -40,12 +45,9 @@ export default function ProfilePage() {
         });
 
       if (storageError) throw new Error(storageError.message);
-
-      setUploadedImg(URL.createObjectURL(croppedImgBlob));
-      setIsCropping(false);
-      setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
+      alert("Error uploading profile icon");
       console.log(error);
     }
   };

@@ -37,7 +37,6 @@ export default function ImageCropper({ imageSrc, onCropComplete }: props) {
         <button
           className={styles.btn_save}
           onClick={() => {
-            console.log(cropArea);
             onCropComplete(imageSrc, cropArea);
           }}
         >
