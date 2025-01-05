@@ -33,14 +33,17 @@ export default function Comment({ commentData }: props) {
         )}
       </div>
       <div className={styles.comment_body}>{commentData.Body}</div>
-      <div className={styles.replies}>
-        {commentData.Replies?.map(c => (
-          <Comment key={c.ID} commentData={c} />
-        ))}
-        {isReplying && (
-          <CommentBar postId={commentData.PostID} replyId={commentData.ID} />
-        )}
-      </div>
+      {(commentData.Replies || isReplying) && (
+        <div className={styles.replies}>
+          {commentData.Replies &&
+            commentData.Replies.map(c => (
+              <Comment key={c.ID} commentData={c} />
+            ))}
+          {isReplying && (
+            <CommentBar postId={commentData.PostID} replyId={commentData.ID} />
+          )}
+        </div>
+      )}
     </div>
   );
 }

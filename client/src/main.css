@@ -24,6 +24,15 @@
   --fs-700: 1.953rem;
   --fs-800: 2.441rem;
   --fs-900: 3.052rem;
+
+  --shadow-large-dark: 0 8px 16px rgba(18, 18, 18, 0.5),
+    0 4px 8px rgba(11, 63, 127, 0.3);
+  --shadow-large-light: 0 4px 8px rgba(11, 63, 127, 0.1),
+    0 2px 4px rgba(11, 63, 127, 0.05);
+  --shadow-small-dark: 0 4px 8px rgba(18, 18, 18, 0.6),
+    0 2px 4px rgba(11, 63, 127, 0.3);
+  --shadow-small-light: 0 2px 4px rgba(11, 63, 127, 0.1),
+    0 1px 2px rgba(11, 63, 127, 0.05);
 }
 
 /*
@@ -115,9 +124,13 @@ h6 {
 body[data-theme="dark"] {
   --clr-body: var(--clr-neutral-900);
   --clr-text: var(--clr-neutral-100);
+  --shadow-large: var(--shadow-large-dark);
+  --shadow-small: var(--shadow-small-dark);
 }
 
 body[data-theme="light"] {
   --clr-body: var(--clr-neutral-100);
   --clr-text: var(--clr-neutral-900);
+  --shadow-large: var(--shadow-large-light);
+  --shadow-small: var(--shadow-small-light);
 }

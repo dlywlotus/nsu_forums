@@ -23,21 +23,20 @@
   border: none;
   outline: none;
   background: var(--clr-body);
-  transition: color 0.3s ease;
 }
 
 .select_menu {
   margin-right: 1rem;
   padding: 0.5rem;
   border-radius: 0.75rem;
-  box-shadow: 0 2px 6px rgba(0, 59, 92, 0.1), 0 1px 3px rgba(0, 59, 92, 0.05);
+  box-shadow: var(--shadow-small);
   cursor: pointer;
 }
 
 .search_bar {
   display: flex;
   border-radius: 0.75rem;
-  box-shadow: 0 2px 6px rgba(0, 59, 92, 0.1), 0 1px 3px rgba(0, 59, 92, 0.05);
+  box-shadow: var(--shadow-small);
 }
 
 .search_bar input {

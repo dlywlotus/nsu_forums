@@ -3,7 +3,7 @@ import styles from "../styles/UserMenu.module.css";
 import supabase from "../supabase";
 import { useQueryClient } from "@tanstack/react-query";
 import DarkModeButton from "./DarkModeButton";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 type props = {
   buttonRef: React.MutableRefObject<any>;
@@ -18,10 +18,12 @@ export default function UserMenu({
 }: props) {
   const queryClient = useQueryClient();
   const modalRef = useRef<any>();
+  const navigate = useNavigate();
 
   const onLogout = async () => {
     await supabase.auth.signOut();
     queryClient.clear();
+    navigate("/");
   };
 
   useEffect(() => {
