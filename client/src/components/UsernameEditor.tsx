@@ -31,7 +31,7 @@ export default function UsernameEditor({}: props) {
     handleSubmit,
     formState: { errors, isSubmitting },
     setError,
-  } = useForm<FormData>({
+  } = useForm({
     resolver: zodResolver(formSchema),
   });
 

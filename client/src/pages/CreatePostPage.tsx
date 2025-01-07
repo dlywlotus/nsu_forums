@@ -29,7 +29,7 @@ export default function CreatePostPage() {
     handleSubmit,
     formState: { errors, isSubmitting },
     setError,
-  } = useForm<FormData>({
+  } = useForm({
     resolver: zodResolver(formSchema),
   });
 
