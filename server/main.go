@@ -31,9 +31,10 @@ func main() {
 		AllowCredentials: true,
 	}))
 
-	//end points
+	//unprotected routes
+	r.GET("/user/:user_id", controllers.GetUserDetails)
+	r.POST("/signup", controllers.HandleUserSignUp)
 
-	//Retrieve posts
 	r.GET("/post/:post_id", controllers.GetPost)
 	r.GET("/posts", controllers.GetPosts)
 
@@ -49,12 +50,11 @@ func main() {
 	authRequired.POST("/delete_post", controllers.DeletePost)
 	// authRequired.PUT("/edit_post", controllers.EditPost)
 
-	//Comments
 	authRequired.POST("/create_comment", controllers.CreateComment)
 	authRequired.DELETE("/delete_comment", controllers.DeleteComment)
 	// authRequired.PUT("/edit_comment", controllers.EditComment)
 
-	r.POST("/signup", controllers.HandleUserSignUp)
+	authRequired.PUT("/change_username", controllers.ChangeUsername)
 
 	port := os.Getenv("PORT")
 	if port == "" {

@@ -10,12 +10,7 @@
 }
 
 .container[data-expanded="false"] {
-  transition: transform 0.3s ease;
   box-shadow: var(--shadow-large);
-}
-
-.container[data-expanded="false"]:hover {
-  transform: translateY(-4px);
 }
 
 .nameAndTime {
