@@ -36,6 +36,7 @@ export default function UsernameEditor({}: props) {
   });
 
   const onSubmit = async (formData: FormData): Promise<any> => {
+    if (formData.username === fetchedUsername) return setIsEditing(false);
     try {
       //get and refresh jwt token and userId
       const {
