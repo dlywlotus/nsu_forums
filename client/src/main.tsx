@@ -7,11 +7,12 @@ import NotFoundPage from "./pages/NotFoundPage";
 import AuthPage from "./pages/AuthPage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { UserProvider } from "./Hooks/useUser";
-import CreatePostPage from "./pages/CreatePostPage";
+
 import MainHeader from "./components/MainHeader";
-import PostDashboardPage from "./pages/PostDashboardPage";
+import PostDashboardPage from "./components/PostDashboard";
 import useTheme from "./Hooks/useTheme";
 import ProfilePage from "./pages/ProfilePage";
+import CreatePostModal from "./components/CreatePostModal";
 
 const queryClient = new QueryClient();
 
@@ -44,11 +45,11 @@ const router = createBrowserRouter([
       },
       {
         path: "create",
-        element: <CreatePostPage />,
+        element: <CreatePostModal />,
       },
       {
         path: "edit",
-        element: <CreatePostPage />,
+        element: <CreatePostModal />,
       },
       {
         path: "profile",

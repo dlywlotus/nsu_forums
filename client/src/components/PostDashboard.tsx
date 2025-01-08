@@ -1,35 +1,38 @@
 import { useRef } from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import PostFilterBar from "../components/PostFilterBar";
-import PostList from "../components/PostList";
+import PostFilterBar from "./PostFilterBar";
+import PostList from "./PostList";
 import { useUser } from "../Hooks/useUser";
-import LoadingSpinner from "../components/LoadingSpinner";
+import LoadingSpinner from "./LoadingSpinner";
 // import styles from "../styles/PostDashboardPage.module.css";
 
 export type filterOptions = {
   sortBy: "new" | "likes";
   category: "romance" | "studies" | "campus" | "others" | "all";
   searchKeyword: string;
+};
+
+type props = {
   selfPosted?: boolean;
 };
 
-export default function PostDashboard() {
+export default function PostDashboard({ selfPosted = false }: props) {
   const { userId } = useUser();
   const filterRef = useRef<filterOptions>({
     sortBy: "new",
     category: "all",
     searchKeyword: "",
-    selfPosted: false,
   });
+
   const fetchPosts = async ({ pageParam }: { pageParam: number }) => {
     let res = await fetch(
       `${import.meta.env.VITE_SERVER_API_URL}/posts?cat=${
         filterRef.current.category
       }&sort=${
         filterRef.current.sortBy
-      }&page=${pageParam}&user_id=${userId}&self=${
-        filterRef.current.selfPosted
-      }&q=${filterRef.current.searchKeyword}`,
+      }&page=${pageParam}&user_id=${userId}&q=${
+        filterRef.current.searchKeyword
+      }&self=${selfPosted}`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -64,6 +67,7 @@ export default function PostDashboard() {
           pagesOfPosts={data.pages}
           fetchNexPage={fetchNextPage}
           hasNextPage={hasNextPage}
+          selfPosted={selfPosted}
         />
       )}
     </>

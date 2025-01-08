@@ -42,11 +42,12 @@ func GetPosts(c *gin.Context) {
 		UserLiked    bool
 		LikeCount    uint
 		CommentCount uint
+		ProfilePic   *string
 	}
 
 	var posts []Post
 	res := initialisers.DB.Table("posts").
-		Select(`posts.*, users.username, 
+		Select(`posts.*, users.username, users.profile_pic, 
 			COUNT(DISTINCT likes.user_id) AS like_count, 
 			EXISTS (
 				SELECT 1 
@@ -57,7 +58,8 @@ func GetPosts(c *gin.Context) {
 		Joins("inner join users ON posts.author_id = users.id").
 		Joins("left join comments ON posts.id = comments.post_id").
 		Joins("left join likes ON posts.id = likes.post_id").
-		Group("posts.id, users.username").
+		Group("posts.id, users.username, users.profile_pic").
+		Where("posts.deleted_at IS NULL").
 		Offset(offset).
 		Limit(limit)
 
@@ -124,12 +126,14 @@ func GetPost(c *gin.Context) {
 		UserLiked    bool
 		LikeCount    int
 		CommentCount int
+		ProfilePic   *string
 	}
 
 	var post Post
 	res := initialisers.DB.Table("posts").
 		Select(`posts.*, 
 			users.username,
+			users.profile_pic,
 			COUNT(likes.user_id) AS like_count,
 			EXISTS (
 				SELECT 1
@@ -139,12 +143,13 @@ func GetPost(c *gin.Context) {
 		Joins("INNER JOIN users ON posts.author_id = users.id").
 		Joins("LEFT JOIN likes ON posts.id = likes.post_id").
 		Where("posts.id = ?", postId).
-		Group("posts.id, users.username").
+		Group("posts.id, users.username, users.profile_pic").
 		Scan(&post)
 
 	type Comment struct {
 		models.Comment
-		Username string
+		Username   string
+		ProfilePic *string
 	}
 
 	type ParentComment struct {
@@ -154,7 +159,7 @@ func GetPost(c *gin.Context) {
 
 	parentComments := make([]ParentComment, 0)
 	parentCommentsRes := initialisers.DB.Table("comments").
-		Select("comments.*, users.username").
+		Select("comments.*, users.username, users.profile_pic").
 		Joins("INNER JOIN users ON comments.author_id = users.id").
 		Where("post_id = ?", postId).
 		Order("comments.id DESC").
@@ -163,7 +168,7 @@ func GetPost(c *gin.Context) {
 
 	childComments := make([]Comment, 0)
 	childCommentsRes := initialisers.DB.Table("comments").
-		Select("comments.*, users.username").
+		Select("comments.*, users.username, users.profile_pic").
 		Joins("INNER JOIN users ON comments.author_id = users.id").
 		Where("post_id = ?", postId).
 		Order("comments.id DESC").
@@ -220,19 +225,11 @@ func CreatePost(c *gin.Context) {
 	})
 }
 
-func EditPost(c *gin.Context) {
-	//Get data off request body
-	var body struct {
-		Title    string
-		Body     string
-		Category string
-		AuthorID string
-	}
-	c.Bind(&body)
+func DeletePost(c *gin.Context) {
+	postId := c.Param("post_id")
 
-	//Create a post
-	post := models.Post{Title: body.Title, Body: body.Body, Category: body.Category, AuthorID: body.AuthorID}
-	result := initialisers.DB.Create(&post)
+	post := models.Post{}
+	result := initialisers.DB.Delete(&post, postId)
 
 	if result.Error != nil {
 		c.Status(400)
@@ -240,11 +237,12 @@ func EditPost(c *gin.Context) {
 	}
 
 	c.JSON(200, gin.H{
-		"post": post,
+		"deleted_post": post,
 	})
 }
 
-func DeletePost(c *gin.Context) {
+// TODO
+func EditPost(c *gin.Context) {
 	//Get data off request body
 	var body struct {
 		Title    string

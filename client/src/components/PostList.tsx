@@ -14,6 +14,7 @@ export type post = {
   UserLiked: boolean;
   LikeCount: number;
   CommentCount: number;
+  ProfilePic: string;
 };
 
 export type page = {
@@ -26,12 +27,14 @@ type props = {
   pagesOfPosts: page[];
   fetchNexPage: any;
   hasNextPage: boolean;
+  selfPosted: boolean;
 };
 
 export default function PostList({
   pagesOfPosts,
   fetchNexPage,
   hasNextPage,
+  selfPosted,
 }: props) {
   const { ref } = useInView({
     onChange: (inView, _) => {
@@ -46,7 +49,7 @@ export default function PostList({
       {pagesOfPosts.map(page => (
         <div className={styles.page} key={page.currentPage}>
           {(page.posts ?? []).map(post => (
-            <Post postContent={post} key={post.ID} />
+            <Post postContent={post} key={post.ID} editable={selfPosted} />
           ))}
         </div>
       ))}

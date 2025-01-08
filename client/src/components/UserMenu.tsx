@@ -3,7 +3,7 @@ import styles from "../styles/UserMenu.module.css";
 import supabase from "../supabase";
 import { useQueryClient } from "@tanstack/react-query";
 import DarkModeButton from "./DarkModeButton";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 type props = {
   buttonRef: React.MutableRefObject<any>;
@@ -21,9 +21,14 @@ export default function UserMenu({
   const navigate = useNavigate();
 
   const onLogout = async () => {
+    navigate("/");
     await supabase.auth.signOut();
     queryClient.clear();
-    navigate("/");
+  };
+
+  const viewProfile = () => {
+    navigate("/profile");
+    setIsMenuOpen(false);
   };
 
   useEffect(() => {
@@ -55,10 +60,8 @@ export default function UserMenu({
           <div>Theme </div>
           <DarkModeButton />
         </div>
-        <Link to='/profile'>View Profile</Link>
-        <button className={styles.btn_logout} onClick={onLogout}>
-          Logout
-        </button>
+        <div onClick={viewProfile}>View Profile</div>
+        <div onClick={onLogout}>Logout</div>
       </div>
     </>
   );

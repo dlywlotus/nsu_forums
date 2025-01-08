@@ -3,11 +3,12 @@ import styles from "../styles/CommentBar.module.css";
 import { useState } from "react";
 import axios from "axios";
 import TextareaAutosize from "react-textarea-autosize";
-import supabase from "../supabase";
+import getSession from "../util/getSession";
 import { useUser } from "../Hooks/useUser";
 import { useNavigate } from "react-router-dom";
 import { useQueryClient } from "@tanstack/react-query";
 import { postData } from "../pages/ExpandedPostPage";
+import LoadingSpinner from "./LoadingSpinner";
 
 type props = {
   postId: number;
@@ -28,7 +29,7 @@ export default function CommentBar({ postId, replyId }: props) {
   const mutation = useMutation({
     mutationFn: async ({ postId, replyId, input }: mutationProps) => {
       //Refresh token if expired and get current session
-      const { data } = await supabase.auth.getSession();
+      const { token } = await getSession();
       const res = await axios.post(
         `${import.meta.env.VITE_SERVER_API_URL}/auth_req/create_comment`,
         {
@@ -39,7 +40,7 @@ export default function CommentBar({ postId, replyId }: props) {
         },
         {
           headers: {
-            Authorization: `Bearer ${data.session?.access_token}`,
+            Authorization: `Bearer ${token}`,
           },
         }
       );
@@ -51,7 +52,7 @@ export default function CommentBar({ postId, replyId }: props) {
         let newComments = replyId
           ? postData.comments.map(c =>
               c.ID === replyId
-                ? { ...c, Replies: [...(c.Replies || []), commentData] }
+                ? { ...c, Replies: [commentData, ...(c.Replies || [])] }
                 : c
             )
           : [commentData, ...postData.comments];
@@ -90,6 +91,7 @@ export default function CommentBar({ postId, replyId }: props) {
       <button className={styles.btn_send}>
         <i className='fa-solid fa-paper-plane'></i>
       </button>
+      {mutation.isPending && <LoadingSpinner isLoading={mutation.isPending} />}
     </form>
   );
 }

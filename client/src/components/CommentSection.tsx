@@ -13,6 +13,7 @@ export type comment = {
   Username: string;
   ReplyID: number | null;
   Replies: comment[];
+  ProfilePic: string;
 };
 
 type props = {

@@ -18,27 +18,32 @@ func CreateComment(c *gin.Context) {
 	//Create comment
 
 	comment := models.Comment{Body: body.Body, AuthorID: body.AuthorID, PostID: body.PostID, ReplyID: body.ReplyID}
-	if res := initialisers.DB.Create(&comment); res.Error != nil {
-		c.Status(400)
-		return
-	}
+	res := initialisers.DB.Create(&comment)
 
-	var userName string
-	if usernameRes := initialisers.DB.
-		Table("users").
-		Select("users.username").
-		Where("users.id = ?", body.AuthorID).
-		Scan(&userName); usernameRes.Error != nil {
+	if res.Error != nil {
 		c.Status(400)
 		return
 	}
 
 	type NewComment struct {
 		models.Comment
-		Username string
+		Username   string
+		ProfilePic *string
 	}
 
-	newComment := NewComment{comment, userName}
+	newComment := NewComment{}
+
+	newCommentRes := initialisers.DB.
+		Table("users").
+		Select("users.username, users.profile_pic, comments.*").
+		Where("comments.id = ?", comment.ID).
+		Joins("INNER JOIN comments ON comments.author_id = users.id").
+		Scan(&newComment)
+
+	if newCommentRes.Error != nil {
+		c.Status(400)
+		return
+	}
 
 	c.JSON(200, gin.H{
 		"created_comment": newComment,
@@ -67,5 +72,3 @@ func DeleteComment(c *gin.Context) {
 	}
 
 }
-
-//?? update comment

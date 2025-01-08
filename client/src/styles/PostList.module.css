@@ -9,4 +9,5 @@
   text-align: center;
   color: var(--clr-primary-700);
   font-weight: var(--fw-semi-bold);
+  padding-bottom: 0.5rem;
 }

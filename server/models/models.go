@@ -17,8 +17,9 @@ type Post struct {
 
 // Foreign key: ID references auth.user.id (supabase auth table)
 type User struct {
-	ID       string `gorm:"type:uuid;primaryKey"`
-	Username string `gorm:"type:varchar(50);not null;unique"`
+	ID         string `gorm:"type:uuid;primaryKey"`
+	Username   string `gorm:"type:varchar(50);not null;unique"`
+	ProfilePic *string
 }
 
 // Foreign key: UserID references user.ID

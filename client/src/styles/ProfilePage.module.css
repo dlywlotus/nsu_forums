@@ -3,6 +3,20 @@
   box-shadow: var(--shadow-large);
 }
 
+.container h1 {
+  padding: 1rem 2rem;
+  font-size: var(--fs-700);
+  color: var(--clr-primary-700);
+  font-weight: var(--fw-bold);
+}
+
+.container h2 {
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-600);
+  color: var(--clr-primary-700);
+  padding: 1rem;
+}
+
 .user_posts {
   padding: 1rem;
 }

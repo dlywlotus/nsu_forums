@@ -1,5 +1,5 @@
 import styles from "../styles/PostFilterBar.module.css";
-import { filterOptions } from "../pages/PostDashboardPage";
+import { filterOptions } from "./PostDashboard";
 import { useState } from "react";
 
 type props = {
@@ -28,7 +28,6 @@ export default function PostFilterBar({ filterRef, refetch }: props) {
 
   const onSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (filterOptions.searchKeyword === "") return;
     filterRef.current = {
       ...filterRef.current,
       searchKeyword: filterOptions.searchKeyword.trim(),
@@ -72,7 +71,7 @@ export default function PostFilterBar({ filterRef, refetch }: props) {
           name='query'
           type='text'
           maxLength={25}
-          placeholder='Search NSU Forums'
+          placeholder='Search'
           onChange={e =>
             setFilterOptions(f => ({ ...f, searchKeyword: e.target.value }))
           }

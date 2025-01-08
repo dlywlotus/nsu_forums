@@ -20,6 +20,7 @@
 
 .modal > * {
   padding: 0.5rem 1rem;
+  cursor: pointer;
 }
 
 .modal > *:hover {
@@ -35,9 +36,5 @@
   display: flex;
   gap: 4rem;
   align-items: center;
-}
-
-.btn_logout {
-  border: none;
-  background-color: var(--clr-body);
+  cursor: auto;
 }

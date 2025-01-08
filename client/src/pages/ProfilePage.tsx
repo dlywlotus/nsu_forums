@@ -1,18 +1,15 @@
 import UserDetails from "../components/UserDetails";
 import styles from "../styles/ProfilePage.module.css";
-import PostDashboard from "./PostDashboardPage";
+import PostDashboard from "../components/PostDashboard";
 
 export default function ProfilePage() {
-  //1. make a backend end point that fetches:
-  //1.1 displayed name
-  //1.2 posts made by user
-
   return (
     <div className={styles.container}>
+      <h1>Profile</h1>
       <UserDetails />
       <div className={styles.user_posts}>
-        <div className={styles.header}>Your posts</div>
-        <PostDashboard />
+        <h2>Your posts</h2>
+        <PostDashboard selfPosted={true} />
       </div>
     </div>
   );

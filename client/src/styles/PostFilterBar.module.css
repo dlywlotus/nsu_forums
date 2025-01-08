@@ -1,6 +1,7 @@
 .container {
   display: flex;
   justify-content: space-between;
+  padding: 0 1rem 0.5rem 1rem;
 }
 
 .container > * {
@@ -40,12 +41,12 @@
 }
 
 .search_bar input {
-  padding: 0.5rem;
-  width: 293px;
+  padding: 0.5rem 1rem;
+  width: 260px;
   border-radius: 0.75rem 0 0 0.75rem;
 }
 
-.search_bar:hover .btn_search {
+.btn_search:hover {
   background-color: var(--clr-accent-400);
 }
 
@@ -60,7 +61,7 @@
 }
 
 .filters label {
-  margin-right: 0.5rem;
+  margin-right: 1rem;
   color: var(--clr-primary-700);
   font-weight: var(--fw-semi-bold);
 }

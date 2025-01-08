@@ -3,8 +3,7 @@
   margin-block: 1rem 2rem;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid var(--clr-neutral-200);
-  margin-bottom: 1px;
+  border-bottom: 2px solid var(--clr-primary-700);
 }
 
 .container .name,
@@ -13,19 +12,20 @@
   padding: 0.25rem;
   text-align: center;
   margin-left: 2rem;
+  font-weight: var(--fw-semi-bold);
+  font-size: var(--fs-500);
+  color: var(--clr-accent-400);
 }
 
 .container:hover,
 .container:focus-within {
-  margin-bottom: 0;
-  border-bottom: 2px solid var(--clr-primary-700);
+  border-bottom: 2px solid var(--clr-accent-400);
 }
 
 .container input {
   outline: none;
   border: none;
   background-color: transparent;
-  color: var(--clr-accent-400);
 }
 
 .btn_edit,
@@ -34,6 +34,7 @@
   background-color: transparent;
   transition: color 0.3s ease;
   width: 2rem;
+  color: var(--clr-primary-700);
 }
 
 .btn_save {

@@ -6,8 +6,3 @@ const supabase = createClient(
 );
 
 export default supabase;
-
-export const getToken = async () => {
-  const { data } = await supabase.auth.getSession();
-  return data.session?.access_token;
-};

@@ -47,14 +47,13 @@ func main() {
 	authRequired.Use(middleware.AuthMiddleware())
 
 	authRequired.POST("/create_post", controllers.CreatePost)
-	authRequired.POST("/delete_post", controllers.DeletePost)
-	// authRequired.PUT("/edit_post", controllers.EditPost)
+	authRequired.DELETE("/delete_post/:post_id", controllers.DeletePost)
+	authRequired.PUT("/edit_post/:post_id", controllers.EditPost)
 
 	authRequired.POST("/create_comment", controllers.CreateComment)
 	authRequired.DELETE("/delete_comment", controllers.DeleteComment)
-	// authRequired.PUT("/edit_comment", controllers.EditComment)
 
-	authRequired.PUT("/change_username", controllers.ChangeUsername)
+	authRequired.PUT("/edit_user/:user_id", controllers.ChangeUserDetails)
 
 	port := os.Getenv("PORT")
 	if port == "" {

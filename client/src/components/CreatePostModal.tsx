@@ -2,9 +2,9 @@ import styles from "../styles/CreatePostPage.module.css";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import supabase from "../supabase";
 import { useNavigate } from "react-router-dom";
 import TextareaAutosize from "react-textarea-autosize";
+import getSession from "../util/getSession";
 
 //Zod schema
 const formSchema = z.object({
@@ -22,7 +22,7 @@ const formSchema = z.object({
 // Infer form schema type
 type FormData = z.infer<typeof formSchema>;
 
-export default function CreatePostPage() {
+export default function CreatePostModal() {
   const navigate = useNavigate();
   const {
     register,
@@ -35,12 +35,7 @@ export default function CreatePostPage() {
 
   const onSubmit = async (formData: FormData): Promise<any> => {
     try {
-      //get and refresh jwt token and userId
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
-      const userId = session?.user.id;
-      const jwtToken = session?.access_token;
+      const { userId, token } = await getSession();
 
       //create post
       const res = await fetch(
@@ -49,7 +44,7 @@ export default function CreatePostPage() {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${jwtToken}`,
+            Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({
             ...formData,
@@ -68,7 +63,7 @@ export default function CreatePostPage() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>Create a post</div>
+      <div className={styles.header}>Create post</div>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
         <label htmlFor='title'>Title</label>
         <TextareaAutosize

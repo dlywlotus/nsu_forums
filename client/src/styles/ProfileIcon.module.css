@@ -28,19 +28,9 @@
 }
 
 .profile_pic img {
-  position: absolute;
-  object-fit: cover;
-}
-
-.profile_pic .saved_icon {
-  z-index: 8;
   height: 100%;
   width: 100%;
-}
-
-.profile_pic .default_icon {
-  width: 99%;
-  height: 99%;
+  object-fit: cover;
 }
 
 .profile_pic input {
