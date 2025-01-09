@@ -13,9 +13,11 @@ export type postData = {
   comments: comment[];
 };
 
-type props = {};
+type props = {
+  isEditing?: boolean;
+};
 
-export default function ExpandedPostPage({}: props) {
+export default function ExpandedPostPage({ isEditing = false }: props) {
   const { postId } = useParams();
   const { userId } = useUser();
 
@@ -27,7 +29,7 @@ export default function ExpandedPostPage({}: props) {
     return data;
   };
 
-  const { data, isPending, isError } = useQuery({
+  const { data, isFetching, isError } = useQuery({
     queryKey: ["post"],
     queryFn: fetchPost,
     enabled: userId !== null,
@@ -36,10 +38,14 @@ export default function ExpandedPostPage({}: props) {
   return (
     <>
       {isError && <div>Error loading post</div>}
-      {isPending && <LoadingSpinner isLoading={isPending} />}
+      {isFetching && <LoadingSpinner isLoading={isFetching} />}
       {data && (
         <div className={styles.container}>
-          <Post postContent={data.post} isExpanded={true} />
+          <Post
+            postContent={data.post}
+            isExpanded={true}
+            isEditing={isEditing}
+          />
           <CommentSection comments={data.comments} postId={data.post.ID} />
         </div>
       )}

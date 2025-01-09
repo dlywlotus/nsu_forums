@@ -49,7 +49,11 @@ export default function PostList({
       {pagesOfPosts.map(page => (
         <div className={styles.page} key={page.currentPage}>
           {(page.posts ?? []).map(post => (
-            <Post postContent={post} key={post.ID} editable={selfPosted} />
+            <Post
+              postContent={post}
+              key={post.ID}
+              isShowControls={selfPosted}
+            />
           ))}
         </div>
       ))}

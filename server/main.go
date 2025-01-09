@@ -52,7 +52,6 @@ func main() {
 
 	authRequired.POST("/create_comment", controllers.CreateComment)
 	authRequired.DELETE("/delete_comment", controllers.DeleteComment)
-
 	authRequired.PUT("/edit_user/:user_id", controllers.ChangeUserDetails)
 
 	port := os.Getenv("PORT")

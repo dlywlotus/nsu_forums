@@ -40,17 +40,18 @@ const router = createBrowserRouter([
         element: <PostDashboardPage />,
       },
       {
-        path: "/post/:postId",
-        element: <PostExpandViewPage />,
-      },
-      {
         path: "create",
         element: <CreatePostModal />,
       },
       {
-        path: "edit",
-        element: <CreatePostModal />,
+        path: "/post/:postId",
+        element: <PostExpandViewPage />,
       },
+      {
+        path: "edit/:postId",
+        element: <PostExpandViewPage isEditing={true} />,
+      },
+
       {
         path: "profile",
         element: <ProfilePage />,

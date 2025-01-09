@@ -213,9 +213,9 @@ func CreatePost(c *gin.Context) {
 
 	//Create a post
 	post := models.Post{Title: body.Title, Body: body.Body, Category: body.Category, AuthorID: body.AuthorID}
-	result := initialisers.DB.Create(&post)
+	res := initialisers.DB.Create(&post)
 
-	if result.Error != nil {
+	if res.Error != nil {
 		c.Status(400)
 		return
 	}
@@ -229,9 +229,9 @@ func DeletePost(c *gin.Context) {
 	postId := c.Param("post_id")
 
 	post := models.Post{}
-	result := initialisers.DB.Delete(&post, postId)
+	res := initialisers.DB.Delete(&post, postId)
 
-	if result.Error != nil {
+	if res.Error != nil {
 		c.Status(400)
 		return
 	}
@@ -241,27 +241,25 @@ func DeletePost(c *gin.Context) {
 	})
 }
 
-// TODO
 func EditPost(c *gin.Context) {
+	postId := c.Param("post_id")
 	//Get data off request body
 	var body struct {
-		Title    string
-		Body     string
-		Category string
-		AuthorID string
+		Title string `json:"title"`
+		Body  string `json:"body"`
 	}
 	c.Bind(&body)
 
-	//Create a post
-	post := models.Post{Title: body.Title, Body: body.Body, Category: body.Category, AuthorID: body.AuthorID}
-	result := initialisers.DB.Create(&post)
+	post := models.Post{}
 
-	if result.Error != nil {
+	res := initialisers.DB.Model(&post).Where("posts.id = ?", postId).Updates(&models.Post{Title: body.Title, Body: body.Body})
+
+	if res.Error != nil {
 		c.Status(400)
 		return
 	}
 
 	c.JSON(200, gin.H{
-		"post": post,
+		"updated_post": post,
 	})
 }

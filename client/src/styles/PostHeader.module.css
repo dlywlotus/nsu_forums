@@ -1,0 +1,39 @@
+.post_upper {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.post_upper img {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.post_details {
+  font-size: var(--fs-300);
+  font-weight: var(--fw-semi-bold);
+}
+
+.categoryAndTime {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.category {
+  text-transform: capitalize;
+}
+
+.category span {
+  margin-left: 0.25rem;
+  color: var(--clr-primary-700);
+}
+
+.category i {
+  color: var(--clr-accent-400);
+}
+
+.time {
+  font-weight: var(--fw-regular);
+}
