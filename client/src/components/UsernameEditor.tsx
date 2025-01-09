@@ -4,7 +4,7 @@ import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import LoadingSpinner from "./LoadingSpinner";
-import useMutatePostIcons from "../Hooks/useMutateUsername";
+import useMutateUsername from "../Hooks/useMutateUsername";
 
 type props = {
   username: string;
@@ -23,7 +23,7 @@ type FormData = z.infer<typeof formSchema>;
 
 export default function UsernameEditor({ username }: props) {
   const [isEditing, setIsEditing] = useState(false);
-  const mutation = useMutatePostIcons();
+  const mutation = useMutateUsername();
 
   const {
     reset,
@@ -68,7 +68,6 @@ export default function UsernameEditor({ username }: props) {
           </button>
         </div>
       )}
-
       {isSubmitting && <LoadingSpinner isLoading={isSubmitting} />}
     </>
   );

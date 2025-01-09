@@ -3,6 +3,7 @@ import axios from "axios";
 import getSession from "../util/getSession";
 import { useUser } from "./useUser";
 import mutateUserDetails from "../util/mutateUserDetails";
+import showError from "../util/showError";
 
 const useMutateUsername = () => {
   const queryClient = useQueryClient();
@@ -35,6 +36,7 @@ const useMutateUsername = () => {
     },
     onError: (err, _, undoFn) => {
       undoFn && undoFn();
+      showError("Error updating username");
       console.log(err);
     },
   });

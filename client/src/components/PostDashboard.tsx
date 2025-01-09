@@ -60,7 +60,7 @@ export default function PostDashboard({ selfPosted = false }: props) {
   return (
     <>
       <PostFilterBar filterRef={filterRef} refetch={refetch} />
-      {isError && <div>Error loading posts</div>}
+      {isError && <div>Error loading posts 😢</div>}
       {isFetching && <LoadingSpinner isLoading={isFetching} />}
       {data && (
         <PostList

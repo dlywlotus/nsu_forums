@@ -10,6 +10,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { useMutation } from "@tanstack/react-query";
 import mutateUserDetails from "../util/mutateUserDetails";
 import { useUser } from "../Hooks/useUser";
+import showError from "../util/showError";
 
 type props = {
   iconURL: string | null;
@@ -32,7 +33,7 @@ export default function ProfileIcon({ iconURL }: props) {
       };
       reader.readAsDataURL(file);
     } else {
-      alert("Please upload a valid image file.");
+      showError("Please upload a valid image file");
     }
   };
 
@@ -82,6 +83,7 @@ export default function ProfileIcon({ iconURL }: props) {
     },
     onError: (err, _, undo) => {
       undo && undo();
+      showError("Error uploading profile icon");
       console.log(err);
     },
   });
@@ -93,7 +95,7 @@ export default function ProfileIcon({ iconURL }: props) {
       const croppedImgBlob: any = await getCroppedImageBlob(img, crop);
       mutation.mutate(croppedImgBlob);
     } catch (error) {
-      alert("Error uploading profile icon");
+      showError("Error uploading profile icon");
       console.log(error);
     }
   };

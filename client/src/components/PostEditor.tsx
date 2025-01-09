@@ -9,6 +9,7 @@ import getSession from "../util/getSession";
 import axios from "axios";
 import { useEffect } from "react";
 import { useQueryClient } from "@tanstack/react-query";
+import showError from "../util/showError";
 
 type props = {
   postContent: post;
@@ -58,9 +59,9 @@ export default function PostEditor({ postContent }: props) {
       queryClient.invalidateQueries({ queryKey: ["post"] });
       goToPost();
     } catch (error) {
-      console.log(error);
       goToPost();
-      //show alert
+      showError("Error updating your post");
+      console.log(error);
     }
   };
 

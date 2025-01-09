@@ -12,7 +12,8 @@ import MainHeader from "./components/MainHeader";
 import PostDashboardPage from "./components/PostDashboard";
 import useTheme from "./Hooks/useTheme";
 import ProfilePage from "./pages/ProfilePage";
-import CreatePostModal from "./components/CreatePostModal";
+import CreatePostPage from "./pages/CreatePostPage";
+import { ToastContainer } from "react-toastify";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,7 @@ const Layout = () => {
       <div className='container'>
         <Outlet />
       </div>
+      <ToastContainer />
     </>
   );
 };
@@ -41,7 +43,7 @@ const router = createBrowserRouter([
       },
       {
         path: "create",
-        element: <CreatePostModal />,
+        element: <CreatePostPage />,
       },
       {
         path: "/post/:postId",

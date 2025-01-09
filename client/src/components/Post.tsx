@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/Post.module.css";
 import { post } from "./PostList";
-import "react-confirm-/src/react-confirm-.css";
 import PostSocialCounters from "./PostSocialCounters";
 import PostControls from "./PostControls";
 import PostHeader from "./PostHeader";
