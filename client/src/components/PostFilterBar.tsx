@@ -1,28 +1,35 @@
 import styles from "../styles/PostFilterBar.module.css";
 import { filterOptions } from "./PostDashboard";
 import { useState } from "react";
+import SelectMenu from "./SelectMenu";
 
 type props = {
   filterRef: React.MutableRefObject<filterOptions>;
   refetch: any;
 };
 
-export default function PostFilterBar({ filterRef, refetch }: props) {
-  const [filterOptions, setFilterOptions] = useState<filterOptions>({
-    sortBy: "new",
-    category: "all",
-    searchKeyword: "",
-  });
+const categoryOptions = [
+  { value: "all", label: "all" },
+  { value: "romance", label: "romance" },
+  { value: "studies", label: "studies" },
+  { value: "campus", label: "campus" },
+  { value: "others", label: "others" },
+];
 
-  const onSelect = (
-    e: React.ChangeEvent<HTMLSelectElement>,
-    filterField: string
-  ) => {
-    setFilterOptions(f => ({ ...f, [filterField]: e.target.value }));
+const sortByOptions = [
+  { value: "likes", label: "likes" },
+  { value: "new", label: "new" },
+];
+
+export default function PostFilterBar({ filterRef, refetch }: props) {
+  const [input, setInput] = useState("");
+
+  const onSelect = (option: any, id: string) => {
     filterRef.current = {
       ...filterRef.current,
-      [filterField]: e.target.value,
+      [id]: option.value,
     };
+
     refetch();
   };
 
@@ -30,7 +37,7 @@ export default function PostFilterBar({ filterRef, refetch }: props) {
     e.preventDefault();
     filterRef.current = {
       ...filterRef.current,
-      searchKeyword: filterOptions.searchKeyword.trim(),
+      searchKeyword: input.trim(),
     };
     refetch();
   };
@@ -38,33 +45,14 @@ export default function PostFilterBar({ filterRef, refetch }: props) {
   return (
     <div className={styles.container}>
       <div className={styles.filters}>
-        <div className={styles.form_group}>
-          <label htmlFor='category'>Category:</label>
-          <select
-            id='category'
-            className={styles.select_menu}
-            onChange={e => onSelect(e, "category")}
-            value={filterOptions?.category}
-          >
-            <option value='all'>all</option>
-            <option value='romance'>romance</option>
-            <option value='studies'>studies</option>
-            <option value='campus'>campus</option>
-            <option value='others'>others</option>
-          </select>
-        </div>
-        <div className={styles.form_group}>
-          <label htmlFor='sortBy'>Sort by:</label>
-          <select
-            id='sortBy'
-            className={styles.select_menu}
-            onChange={e => onSelect(e, "sortBy")}
-            value={filterOptions?.sortBy}
-          >
-            <option value='new'>new</option>
-            <option value='hot'>hot</option>
-          </select>
-        </div>
+        <div className={styles.label}>Category:</div>
+        <SelectMenu
+          options={categoryOptions}
+          onChange={onSelect}
+          id={"category"}
+        />
+        <div className={styles.label}>Sort by:</div>
+        <SelectMenu options={sortByOptions} onChange={onSelect} id={"sortBy"} />
       </div>
       <form className={styles.search_bar} onSubmit={onSearch}>
         <input
@@ -72,10 +60,8 @@ export default function PostFilterBar({ filterRef, refetch }: props) {
           type='text'
           maxLength={25}
           placeholder='Search'
-          onChange={e =>
-            setFilterOptions(f => ({ ...f, searchKeyword: e.target.value }))
-          }
-          value={filterOptions.searchKeyword}
+          onChange={e => setInput(e.target.value)}
+          value={input}
         />
         <button className={styles.btn_search}>
           <i className='fa-solid fa-magnifying-glass'></i>

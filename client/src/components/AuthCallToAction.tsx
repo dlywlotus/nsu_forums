@@ -3,23 +3,17 @@ import styles from "../styles/AuthCallToAction.module.css";
 type props = {
   isLogin: boolean;
   setIsLogin: React.Dispatch<React.SetStateAction<boolean>>;
-  setInput: React.Dispatch<
-    React.SetStateAction<{
-      username: string;
-      email: string;
-      password: string;
-    }>
-  >;
+  reset: any;
 };
 
 export default function AuthCallToAction({
   isLogin,
   setIsLogin,
-  setInput,
+  reset,
 }: props) {
   const onClick = () => {
     setIsLogin(!isLogin);
-    setInput({ username: "", email: "", password: "" });
+    reset();
   };
 
   const message = isLogin

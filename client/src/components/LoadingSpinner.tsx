@@ -9,7 +9,7 @@ export default function LoadingSpinner({ isLoading }: props) {
   return (
     <div className={styles.wrapper}>
       <ClipLoader
-        color={"#ff6a13"}
+        color={"#c78d94"}
         loading={isLoading}
         size={40}
         cssOverride={{ marginTop: "2rem" }}

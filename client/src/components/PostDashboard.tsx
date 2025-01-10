@@ -4,7 +4,6 @@ import PostFilterBar from "./PostFilterBar";
 import PostList from "./PostList";
 import { useUser } from "../Hooks/useUser";
 import LoadingSpinner from "./LoadingSpinner";
-// import styles from "../styles/PostDashboardPage.module.css";
 
 export type filterOptions = {
   sortBy: "new" | "likes";

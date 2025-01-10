@@ -1,9 +1,7 @@
 import AuthModal from "../components/AuthModal";
 import styles from "../styles/AuthPage.module.css";
 
-type props = {};
-
-export default function AuthPage({}: props) {
+export default function AuthPage() {
   return (
     <div className={styles.backdrop}>
       <AuthModal />

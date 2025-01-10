@@ -2,28 +2,52 @@ import styles from "../styles/AuthModal.module.css";
 import supabase from "../supabase";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import AuthInputField from "./AuthInputField";
 import AuthCallToAction from "./AuthCallToAction";
 import AuthHeader from "./AuthHeader";
 import AuthError from "./AuthError";
-import AuthMainButton from "./AuthMainButton";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import LoadingSpinner from "./LoadingSpinner";
 
-type props = {};
+// Infer form schema type
+type FormData = {
+  username: string;
+  email: string;
+  password: string;
+};
 
-export default function AuthModal({}: props) {
+export default function AuthModal() {
   const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
   const [isShowError, setIsShowError] = useState(false);
-  const [input, setInput] = useState({
-    username: "",
-    email: "",
-    password: "",
+
+  const formSchema = z.object({
+    username: isLogin
+      ? z.string().optional()
+      : z
+          .string()
+          .min(3, "Min length: 3 characters")
+          .max(15, "Max length: 15 characters"),
+    email: z.string().email("Invalid email format"),
+    password: z
+      .string()
+      .min(6, "Min length: 6 characters")
+      .max(30, "Max length: 30 characters"),
+  });
+
+  const {
+    reset,
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm({
+    resolver: zodResolver(formSchema),
   });
 
   const flashErrorMessage = () => {
     setIsShowError(true);
-    setTimeout(() => setIsShowError(false), 1500);
+    setTimeout(() => setIsShowError(false), 2000);
   };
 
   const createUser = async (userData: { id: string; username: string }) => {
@@ -39,80 +63,69 @@ export default function AuthModal({}: props) {
     }
   };
 
-  const onLogin = async () => {
-    setIsLoading(true);
+  const onLogin = async (formData: FormData) => {
     let { error } = await supabase.auth.signInWithPassword({
-      email: input.email,
-      password: input.password,
+      email: formData.email,
+      password: formData.password,
     });
-    if (error) {
-      flashErrorMessage();
-      setIsLoading(false);
-      return console.log(error.message);
-    }
-
-    navigate("/");
+    if (error) throw new Error(error.message);
   };
 
-  const onSignUp = async () => {
+  const onSignUp = async (formData: FormData) => {
+    let { data, error } = await supabase.auth.signUp({
+      email: formData.email,
+      password: formData.password,
+    });
+    if (error) throw new Error(error.message);
+    await createUser({
+      id: data.user?.id || "",
+      username: formData.username,
+    });
+  };
+
+  const onSubmit = async (formData: FormData) => {
     try {
-      setIsLoading(true);
-      let { data, error } = await supabase.auth.signUp({
-        email: input.email,
-        password: input.password,
-      });
-
-      if (error) throw new Error(error.message);
-
-      await createUser({
-        id: data.user?.id || "",
-        username: input.username,
-      });
+      isLogin ? await onLogin(formData) : await onSignUp(formData);
       navigate("/");
     } catch (error) {
       console.log(error);
-      setIsLoading(false);
       flashErrorMessage();
     }
   };
-
   return (
-    <>
-      <form className={styles.container}>
-        <AuthHeader />
-        <AuthError isShowError={isShowError} />
-        {!isLogin && (
-          <AuthInputField
-            label='Username'
-            inputType='username'
-            input={input}
-            setInput={setInput}
-          />
-        )}
-        <AuthInputField
-          label='Email'
-          inputType='email'
-          input={input}
-          setInput={setInput}
-        />
-        <AuthInputField
-          label='Password'
-          inputType='password'
-          input={input}
-          setInput={setInput}
-        />
-        <AuthMainButton
-          isLogin={isLogin}
-          isLoading={isLoading}
-          onSignUp={onSignUp}
-          onLogin={onLogin}
-        />
-        <AuthCallToAction
-          isLogin={isLogin}
-          setIsLogin={setIsLogin}
-          setInput={setInput}
-        />
-      </form>
-    </>
+    <form className={styles.container} onSubmit={handleSubmit(onSubmit)}>
+      <AuthHeader />
+      <AuthError isShowError={isShowError} />
+      {!isLogin && (
+        <>
+          <div className={styles.label}>Username</div>
+          <input {...register("username")} />
+          {errors.username && (
+            <p className={styles.err}>{errors.username.message}</p>
+          )}
+        </>
+      )}
+      <div className={styles.label}>Email</div>
+      <input type='email ' {...register("email")} />
+      {errors.email && <p className={styles.err}>{errors.email.message}</p>}
+      <div className={styles.label}>Password</div>
+      <input type='password' {...register("password")} />
+      {errors.password && (
+        <p className={styles.err}>{errors.password.message}</p>
+      )}
+      <button
+        type='submit'
+        className={styles.btn_authenticate}
+        disabled={isSubmitting}
+      >
+        {isLogin ? "Log in" : "Sign up"}
+      </button>
+      <AuthCallToAction
+        isLogin={isLogin}
+        setIsLogin={setIsLogin}
+        reset={reset}
+      />
+      {isSubmitting && <LoadingSpinner isLoading={isSubmitting} />}
+    </form>
   );
 }
