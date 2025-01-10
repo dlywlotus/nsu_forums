@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   padding: 0 1rem 0.5rem 1rem;
+  font-size: var(--fs-300);
 }
 
 .container > * {
@@ -12,6 +13,12 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+
+.filter_group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 .search_bar:hover {
@@ -30,11 +37,10 @@
   border-radius: 0.75rem;
   border: 1px solid var(--clr-neutral-300);
   background-color: var(--clr-modal);
-  font-size: var(--fs-300);
 }
 
 .search_bar input {
-  padding: 0.25rem 0.5rem;
+  padding: 0.5rem;
   width: 260px;
   border-radius: 0.75rem 0 0 0.75rem;
 }
@@ -52,30 +58,24 @@
 
 .label {
   font-weight: var(--fw-bold);
-  font-size: var(--fs-300);
 }
 
 @media (width < 850px) {
   .container {
-    font-size: var(--fs-300);
     flex-direction: column;
   }
 
-  .form_group {
+  .filter_group {
     flex-direction: column;
     align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .filter_group .label {
+    margin-left: 0.25rem;
   }
 
   .search_bar input {
     width: 100%;
-  }
-
-  .select_menu {
-    padding: 0.5rem 1rem;
-  }
-
-  .filters label {
-    margin-left: 0.25rem;
-    margin-bottom: 0.25rem;
   }
 }

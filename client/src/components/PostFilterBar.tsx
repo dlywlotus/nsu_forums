@@ -45,14 +45,22 @@ export default function PostFilterBar({ filterRef, refetch }: props) {
   return (
     <div className={styles.container}>
       <div className={styles.filters}>
-        <div className={styles.label}>Category:</div>
-        <SelectMenu
-          options={categoryOptions}
-          onChange={onSelect}
-          id={"category"}
-        />
-        <div className={styles.label}>Sort by:</div>
-        <SelectMenu options={sortByOptions} onChange={onSelect} id={"sortBy"} />
+        <section className={styles.filter_group}>
+          <div className={styles.label}>Category:</div>
+          <SelectMenu
+            options={categoryOptions}
+            onChange={onSelect}
+            id={"category"}
+          />
+        </section>
+        <section className={styles.filter_group}>
+          <div className={styles.label}>Sort by:</div>
+          <SelectMenu
+            options={sortByOptions}
+            onChange={onSelect}
+            id={"sortBy"}
+          />
+        </section>
       </div>
       <form className={styles.search_bar} onSubmit={onSearch}>
         <input

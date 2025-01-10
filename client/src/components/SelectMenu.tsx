@@ -20,7 +20,6 @@ export default function SelectMenu({ options, onChange, id }: props) {
       backgroundColor: "var(--clr-modal)",
       border: "1px solid var(--clr-neutral-300) !important",
       borderRadius: "0.75rem",
-
       boxShadow: "none",
       ":hover": {
         borderColor: "var(--clr-accent-400) !important",
