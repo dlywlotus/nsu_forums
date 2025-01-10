@@ -27,6 +27,7 @@ export default function UserMenu({
   };
 
   const viewProfile = () => {
+    queryClient.removeQueries({ queryKey: ["posts"] });
     navigate("/profile");
     setIsMenuOpen(false);
   };

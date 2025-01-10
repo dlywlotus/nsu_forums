@@ -26,7 +26,7 @@ export default function Post({
   };
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} data-static={isShowControls}>
       <div
         className={styles.container}
         onClick={isExpanded ? undefined : expandPost}

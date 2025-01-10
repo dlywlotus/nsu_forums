@@ -1,5 +1,6 @@
 :root {
   --clr-accent-400: #c78d94;
+  --clr-accent-200: #f3eeee;
 
   --clr-neutral-100: #fafafa; /* For modals/inputs */
   --clr-neutral-200: #f4f4f4; /* For tex/body*/

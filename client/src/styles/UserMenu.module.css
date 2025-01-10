@@ -22,10 +22,12 @@
 .modal > * {
   padding: 0.5rem 1rem;
   cursor: pointer;
+  width: 100%;
 }
 
 .modal > *:hover {
   color: var(--clr-accent-400);
+  background-color: var(--clr-accent-200);
 }
 
 .modal a {

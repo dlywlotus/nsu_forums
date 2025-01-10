@@ -32,10 +32,13 @@ export default function SelectMenu({ options, onChange, id }: props) {
       borderRadius: "0.75rem",
       boxShadow: "none",
       border: "1px solid var(--clr-neutral-300)",
+      overflow: "hidden",
+      width: "120px",
     }),
     option: (styles: any, { isFocused, isSelected }: any) => ({
       ...styles,
-      backgroundColor: "transparent",
+      backgroundColor:
+        isFocused || isSelected ? "var(--clr-accent-200)" : "transparent",
       color: isFocused || isSelected ? "var(--clr-accent-400)" : "inherit",
     }),
     singleValue: (styles: any) => ({
@@ -51,7 +54,7 @@ export default function SelectMenu({ options, onChange, id }: props) {
 
   const handleOnChange = (selected: any) => {
     setSelectedOption(selected);
-    if (onChange && id) onChange(selected, id);
+    if (onChange) onChange(selected, id ?? "");
   };
 
   return (

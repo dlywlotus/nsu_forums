@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useNavigate } from "react-router-dom";
 import TextareaAutosize from "react-textarea-autosize";
 import getSession from "../util/getSession";
+import SelectMenu from "../components/SelectMenu";
 
 //Zod schema
 const formSchema = z.object({
@@ -19,12 +20,20 @@ const formSchema = z.object({
   category: z.enum(["romance", "studies", "campus", "others"]),
 });
 
+const categoryOptions = [
+  { value: "romance", label: "romance" },
+  { value: "studies", label: "studies" },
+  { value: "campus", label: "campus" },
+  { value: "others", label: "others" },
+];
+
 // Infer form schema type
 type FormData = z.infer<typeof formSchema>;
 
 export default function CreatePostModal() {
   const navigate = useNavigate();
   const {
+    reset,
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
@@ -33,6 +42,11 @@ export default function CreatePostModal() {
     resolver: zodResolver(formSchema),
   });
 
+  const onSelect = (option: any, _: string) => {
+    reset({
+      category: option.value,
+    });
+  };
   const onSubmit = async (formData: FormData): Promise<any> => {
     try {
       const { userId, token } = await getSession();
@@ -83,19 +97,12 @@ export default function CreatePostModal() {
         />
         {errors.body && <p className={styles.err}>{errors.body.message}</p>}
 
-        <label htmlFor='category'>Category</label>
-        <select id='category' {...register("category")}>
-          <option value=''>Select a category</option>
-          <option value='romance'>romance</option>
-          <option value='studies'>studies</option>
-          <option value='campus'>campus</option>
-          <option value='others'>others</option>
-        </select>
-        {errors.category && <p className={styles.err}>Invalid option</p>}
+        <div className={styles.label}>Category</div>
+        <SelectMenu options={categoryOptions} onChange={onSelect} />
 
         <div className={styles.bottom_row}>
           <button type='submit' disabled={isSubmitting}>
-            {isSubmitting ? "Posting" : "Create"}
+            {isSubmitting ? "...Posting" : "Create"}
           </button>
           {errors.root && <p className={styles.err}>{errors.root.message}</p>}
         </div>

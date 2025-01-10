@@ -11,6 +11,17 @@
   margin-bottom: 0.5rem;
 }
 
+.form label,
+.label {
+  margin-left: 0.25rem;
+  font-size: var(--fs-300);
+  font-weight: var(--fw-bold);
+}
+
+.label {
+  margin-bottom: 0.25rem;
+}
+
 .title_input,
 .body_input,
 .form select {
@@ -18,7 +29,7 @@
   border-radius: 0.75rem;
   border: 1px solid var(--clr-neutral-300);
   background-color: transparent;
-  margin-block: 0.5rem;
+  margin-block: 0.25rem 1rem;
   padding: 0.5rem;
   outline: none;
 }
