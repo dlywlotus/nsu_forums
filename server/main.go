@@ -11,8 +11,8 @@ import (
 )
 
 func init() {
-	// Un-comment this if not deploying on render
-	initialisers.LoadEnvVariables()
+	// Un-comment this if not hosting on localhost
+	// initialisers.LoadEnvVariables()
 	initialisers.ConnectToDb()
 }
 
