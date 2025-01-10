@@ -1,12 +1,12 @@
 :root {
   --clr-accent-400: #c78d94;
 
-  --clr-neutral-100: #fafafa;
-  --clr-neutral-200: #f6f6f6; /*for modals or inputs*/
-  --clr-neutral-300: #dcdcdc; /*for borders*/
-  --clr-neutral-700: #2c2c2c; /*for borders*/
-  --clr-neutral-800: #181818; /*for modals or inputs*/
-  --clr-neutral-900: #121212;
+  --clr-neutral-100: #fafafa; /* For modals/inputs */
+  --clr-neutral-200: #f4f4f4; /* For tex/body*/
+  --clr-neutral-300: #dcdcdc; /* For borders */
+  --clr-neutral-700: #2c2c2c; /* For borders */
+  --clr-neutral-800: #1f1f1f; /* For text/body */
+  --clr-neutral-900: #121212; /* For modals/inputs */
 
   --clr-error: #e63946;
 
@@ -102,7 +102,7 @@ h6 {
 /*style scrollbar*/
 :root {
   scrollbar-width: thin;
-  scrollbar-color: var(--clr-neutral-300) transparent;
+  scrollbar-color: var(--clr-neutral-900) transparent;
 }
 
 /*THEME*/

@@ -1,9 +1,25 @@
+.wrapper {
+  position: relative;
+}
+
 .container {
   border-radius: 0.75rem;
   padding: 1rem;
   cursor: pointer;
-  position: relative;
   background-color: var(--clr-modal);
+  z-index: 2;
+}
+
+.back_shadow {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  content: "";
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
+  z-index: -1;
+  border-radius: 0.75rem;
+  background-color: var(--clr-accent-400);
 }
 
 .container[data-expanded="true"] {
@@ -13,6 +29,11 @@
 
 .container[data-expanded="false"] {
   border: 1px solid var(--clr-neutral-700);
+  transition: transform 0.2s ease-in-out;
+}
+
+.container[data-expanded="false"]:hover {
+  transform: translate(6px, -6px);
 }
 
 .post_title {

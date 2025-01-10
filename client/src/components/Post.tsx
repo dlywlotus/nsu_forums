@@ -26,21 +26,24 @@ export default function Post({
   };
 
   return (
-    <div
-      className={styles.container}
-      onClick={isExpanded ? undefined : expandPost}
-      data-expanded={isExpanded}
-    >
-      <PostHeader postContent={postContent} />
-      {isEditing && <PostEditor postContent={postContent} />}
-      {!isEditing && (
-        <>
-          <div className={styles.post_title}>{postContent.Title}</div>
-          <p className={styles.post_body}>{postContent.Body}</p>
-        </>
-      )}
-      <PostSocialCounters postContent={postContent} isExpanded={isExpanded} />
-      {isShowControls && <PostControls postId={postContent.ID} />}
+    <div className={styles.wrapper}>
+      <div
+        className={styles.container}
+        onClick={isExpanded ? undefined : expandPost}
+        data-expanded={isExpanded}
+      >
+        <PostHeader postContent={postContent} />
+        {isEditing && <PostEditor postContent={postContent} />}
+        {!isEditing && (
+          <>
+            <div className={styles.post_title}>{postContent.Title}</div>
+            <p className={styles.post_body}>{postContent.Body}</p>
+          </>
+        )}
+        <PostSocialCounters postContent={postContent} isExpanded={isExpanded} />
+        {isShowControls && <PostControls postId={postContent.ID} />}
+      </div>
+      <div className={styles.back_shadow}></div>
     </div>
   );
 }
