@@ -1,7 +1,6 @@
 .btn_create {
   border: none;
-  color: var(--clr-primary-700);
-  font-weight: var(--fw-semi-bold);
+  font-weight: var(--fw-bold);
   border-radius: 0.75rem;
   transition: color 0.3s ease, background-color 0.3s ease;
   background-color: transparent;

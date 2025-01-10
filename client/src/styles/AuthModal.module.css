@@ -6,16 +6,16 @@
   padding: 2rem;
   justify-content: center;
   color: var(--clr-text);
-  background-color: var(--clr-body);
+  background-color: var(--clr-modal);
   position: relative;
-  transition: color 0.3s ease, background-color 0.3s ease;
+  border: 1px solid var(--clr-neutral-700);
 }
 
 .container input {
   border: none;
   background-color: transparent;
   outline: none;
-  border-bottom: 1px solid var(--clr-primary-700);
+  border-bottom: 1px solid var(--clr-neutral-300);
 }
 
 .container input:focus-within {

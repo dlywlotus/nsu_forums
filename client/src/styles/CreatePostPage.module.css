@@ -1,13 +1,13 @@
 .container {
-  box-shadow: var(--shadow-large);
+  border: 1px solid var(--clr-neutral-700);
+  background-color: var(--clr-modal);
   padding: 1rem;
   border-radius: 0.75rem;
 }
 
 .header {
-  font-weight: var(--fw-semi-bold);
+  font-weight: var(--fw-bold);
   font-size: var(--fs-600);
-  color: var(--clr-primary-700);
   margin-bottom: 0.5rem;
 }
 
@@ -16,8 +16,8 @@
 .form select {
   display: block;
   border-radius: 0.75rem;
-  border: 1px solid var(--clr-neutral-200);
-  background-color: var(--clr-body);
+  border: 1px solid var(--clr-neutral-300);
+  background-color: transparent;
   margin-block: 0.5rem;
   padding: 0.5rem;
   outline: none;
@@ -37,14 +37,6 @@
   min-height: 138px;
 }
 
-.form select:hover {
-  color: var(--clr-accent-400);
-}
-
-.form select {
-  transition: color 0.3s ease;
-}
-
 .bottom_row {
   margin-top: 1rem;
   display: flex;
@@ -52,9 +44,9 @@
 }
 
 .form button {
-  background-color: var(--clr-primary-700);
   border: none;
-  color: #d0d0d0;
+  color: var(--clr-body);
+  background-color: var(--clr-text);
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   cursor: pointer;
@@ -64,9 +56,10 @@
 
 .form button:hover {
   background-color: var(--clr-accent-400);
+  color: var(--clr-neutral-100);
 }
 
 .err {
   color: var(--clr-error);
-  font-weight: var(--fw-semi-bold);
+  font-weight: var(--fw-bold);
 }

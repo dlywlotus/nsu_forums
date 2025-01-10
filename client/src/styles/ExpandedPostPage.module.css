@@ -1,4 +1,5 @@
 .container {
-  box-shadow: var(--shadow-large);
+  border: 1px solid var(--clr-neutral-700);
   border-radius: 0.75rem;
+  background-color: var(--clr-modal);
 }

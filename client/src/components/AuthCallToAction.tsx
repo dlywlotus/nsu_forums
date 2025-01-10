@@ -18,7 +18,7 @@ export default function AuthCallToAction({
   setInput,
 }: props) {
   const onClick = () => {
-    setIsLogin(bool => !bool);
+    setIsLogin(!isLogin);
     setInput({ username: "", email: "", password: "" });
   };
 

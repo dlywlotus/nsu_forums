@@ -7,7 +7,6 @@
 
 .end_of_page {
   text-align: center;
-  color: var(--clr-primary-700);
-  font-weight: var(--fw-semi-bold);
+  font-weight: var(--fw-bold);
   padding-bottom: 0.5rem;
 }

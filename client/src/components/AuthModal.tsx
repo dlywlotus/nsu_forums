@@ -78,7 +78,7 @@ export default function AuthModal({}: props) {
 
   return (
     <>
-      <div className={styles.container}>
+      <form className={styles.container}>
         <AuthHeader />
         <AuthError isShowError={isShowError} />
         {!isLogin && (
@@ -112,7 +112,7 @@ export default function AuthModal({}: props) {
           setIsLogin={setIsLogin}
           setInput={setInput}
         />
-      </div>
+      </form>
     </>
   );
 }

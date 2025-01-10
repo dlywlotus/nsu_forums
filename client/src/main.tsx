@@ -7,7 +7,6 @@ import NotFoundPage from "./pages/NotFoundPage";
 import AuthPage from "./pages/AuthPage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { UserProvider } from "./Hooks/useUser";
-
 import MainHeader from "./components/MainHeader";
 import PostDashboardPage from "./components/PostDashboard";
 import useTheme from "./Hooks/useTheme";
@@ -17,9 +16,12 @@ import { ToastContainer } from "react-toastify";
 
 const queryClient = new QueryClient();
 
-const Layout = () => {
+const ThemeProvider = () => {
   useTheme();
+  return <Outlet />;
+};
 
+const Layout = () => {
   return (
     <>
       <MainHeader />
@@ -34,35 +36,37 @@ const Layout = () => {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    element: <ThemeProvider />,
     errorElement: <NotFoundPage />,
     children: [
       {
         path: "/",
-        element: <PostDashboardPage />,
+        element: <Layout />,
+        children: [
+          {
+            path: "/",
+            element: <PostDashboardPage />,
+          },
+          { path: "create", element: <CreatePostPage /> },
+          {
+            path: "post/:postId",
+            element: <PostExpandViewPage />,
+          },
+          {
+            path: "edit/:postId",
+            element: <PostExpandViewPage isEditing={true} />,
+          },
+          {
+            path: "profile",
+            element: <ProfilePage />,
+          },
+        ],
       },
       {
-        path: "create",
-        element: <CreatePostPage />,
-      },
-      {
-        path: "/post/:postId",
-        element: <PostExpandViewPage />,
-      },
-      {
-        path: "edit/:postId",
-        element: <PostExpandViewPage isEditing={true} />,
-      },
-
-      {
-        path: "profile",
-        element: <ProfilePage />,
+        path: "/auth",
+        element: <AuthPage />,
       },
     ],
-  },
-  {
-    path: "/auth",
-    element: <AuthPage />,
   },
 ]);
 

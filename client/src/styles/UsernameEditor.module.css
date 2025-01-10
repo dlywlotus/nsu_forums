@@ -3,7 +3,7 @@
   margin-block: 1rem 2rem;
   display: flex;
   align-items: center;
-  border-bottom: 2px solid var(--clr-primary-700);
+  border-bottom: 2px solid var(--clr-text);
 }
 
 .container .name,
@@ -12,9 +12,8 @@
   padding: 0.25rem;
   text-align: center;
   margin-left: 2rem;
-  font-weight: var(--fw-semi-bold);
+  font-weight: var(--fw-bold);
   font-size: var(--fs-500);
-  color: var(--clr-accent-400);
 }
 
 .container:hover,
@@ -34,7 +33,6 @@
   background-color: transparent;
   transition: color 0.3s ease;
   width: 2rem;
-  color: var(--clr-primary-700);
 }
 
 .btn_save {
@@ -52,5 +50,5 @@
   text-align: center;
   width: 100%;
   color: var(--clr-error);
-  font-weight: var(--fw-semi-bold);
+  font-weight: var(--fw-bold);
 }

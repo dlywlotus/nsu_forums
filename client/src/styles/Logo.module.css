@@ -1,13 +1,9 @@
 .logo {
-  color: var(--clr-primary-700);
   font-size: var(--fs-800);
   line-height: 1;
   font-weight: var(--fw-bold);
   text-decoration: none;
-}
-
-.logo span {
-  color: var(--clr-accent-400);
+  color: var(--clr-text);
 }
 
 @media (width < 765px) {

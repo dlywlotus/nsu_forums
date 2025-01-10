@@ -40,7 +40,7 @@ export default function PostLikes({
   return (
     <button className={styles.btn_like} onClick={onClick} data-liked={isLiked}>
       <i className='fa-solid fa-fire'></i>
-      <div>{count}</div>
+      <span>{count}</span>
     </button>
   );
 }

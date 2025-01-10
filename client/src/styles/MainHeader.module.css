@@ -3,14 +3,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--clr-body);
-  box-shadow: var(--shadow-small);
+  background-color: var(--clr-modal);
   padding: 1rem;
   width: 100%;
   top: 0;
   z-index: 900;
   height: 65px;
   margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--clr-neutral-700);
 }
 
 .nav_btns {

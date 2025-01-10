@@ -16,7 +16,7 @@
 .profile_pic span {
   position: absolute;
   color: var(--clr-neutral-100);
-  font-weight: var(--fw-semi-bold);
+  font-weight: var(--fw-bold);
   transition: opacity 0.3s ease;
   opacity: 0;
   height: 100%;

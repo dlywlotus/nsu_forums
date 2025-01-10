@@ -13,7 +13,6 @@
 
 .post_details {
   font-size: var(--fs-300);
-  font-weight: var(--fw-semi-bold);
 }
 
 .categoryAndTime {
@@ -23,17 +22,9 @@
 
 .category {
   text-transform: capitalize;
+  font-weight: var(--fw-bold);
 }
 
 .category span {
   margin-left: 0.25rem;
-  color: var(--clr-primary-700);
-}
-
-.category i {
-  color: var(--clr-accent-400);
-}
-
-.time {
-  font-weight: var(--fw-regular);
 }

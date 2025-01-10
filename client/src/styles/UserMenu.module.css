@@ -1,14 +1,15 @@
 .modal {
-  background-color: var(--clr-body);
+  background-color: var(--clr-modal);
+  border: 1px solid var(--clr-neutral-700);
   position: absolute;
-  top: calc(65px + 6px); /*height of header + gap for shadow*/
+  top: calc(65px + 0.5rem);
   right: 0;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.1s ease-in;
-  border-radius: 0.75rem;
+  border-radius: 0.5rem;
   padding-block: 0.5rem;
-  box-shadow: 0 4px 8px rgba(0, 59, 92, 0.1), 0 2px 4px rgba(0, 59, 92, 0.05);
+
   display: grid;
   place-items: start;
 }

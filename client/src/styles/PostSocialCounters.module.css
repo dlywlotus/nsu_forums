@@ -1,9 +1,7 @@
 .social_counters {
   display: flex;
   gap: 1rem;
-  color: var(--clr-primary-700);
   align-items: center;
-  font-weight: var(--fw-semi-bold);
   font-family: var(--ff-numbers);
 }
 

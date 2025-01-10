@@ -13,8 +13,8 @@ export default function DarkModeButton() {
     <Switch
       checked={theme === "dark"}
       onChange={toggleTheme}
-      onColor='#0b3f7f'
-      offColor='#ff6a13'
+      onColor='#c78d94'
+      offColor='#121212'
       handleDiameter={20}
       uncheckedIcon={false}
       checkedIcon={false}

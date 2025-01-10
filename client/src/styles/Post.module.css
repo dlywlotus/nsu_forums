@@ -3,6 +3,7 @@
   padding: 1rem;
   cursor: pointer;
   position: relative;
+  background-color: var(--clr-modal);
 }
 
 .container[data-expanded="true"] {
@@ -11,12 +12,11 @@
 }
 
 .container[data-expanded="false"] {
-  box-shadow: var(--shadow-large);
+  border: 1px solid var(--clr-neutral-700);
 }
 
 .post_title {
   font-weight: var(--fw-bold);
-  color: var(--clr-primary-700);
   font-size: var(--fs-500);
   margin-bottom: 0.25rem;
 }

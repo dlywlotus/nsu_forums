@@ -13,5 +13,5 @@
 .secondary_header {
   color: var(--clr-primary-700);
   font-size: var(--fs-500);
-  font-weight: var(--fw-semi-bold);
+  font-weight: var(--fw-bold);
 }

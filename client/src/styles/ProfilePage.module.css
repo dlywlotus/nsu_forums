@@ -1,19 +1,18 @@
 .container {
   border-radius: 0.75rem;
-  box-shadow: var(--shadow-large);
+  border: 1px solid var(--clr-neutral-700);
+  background-color: var(--clr-modal);
 }
 
 .container h1 {
   padding: 1rem 2rem;
   font-size: var(--fs-700);
-  color: var(--clr-primary-700);
   font-weight: var(--fw-bold);
 }
 
 .container h2 {
   font-weight: var(--fw-bold);
   font-size: var(--fs-600);
-  color: var(--clr-primary-700);
   padding: 1rem;
 }
 
