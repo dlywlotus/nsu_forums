@@ -14,19 +14,25 @@ import showError from "../util/showError";
 import { fetchedUser } from "./UserDetails";
 import Skeleton from "react-loading-skeleton";
 import { useMediaQuery } from "react-responsive";
+import isBlobUrl from "../util/isBlobUrl";
 
 type props = {
   fetchedUser: fetchedUser | undefined;
 };
 
 export default function ProfileIcon({ fetchedUser }: props) {
-  const iconURL = fetchedUser?.ProfilePic;
   const { userId } = useUser();
   const queryClient = useQueryClient();
   const fileInputRef = useRef<any>(null);
   const [uploadedImg, setUploadedImg] = useState<any>(null);
   const [isCropping, setIsCropping] = useState(false);
   const isMobile = useMediaQuery({ query: "(max-width: 765px)" });
+  const imgUrl = fetchedUser?.ProfilePic;
+  const iconUrl = imgUrl
+    ? isBlobUrl(imgUrl)
+      ? imgUrl
+      : `${imgUrl}?date=${Date.now()}`
+    : defaultIcon;
 
   const handleImgUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0] ?? null;
@@ -110,7 +116,7 @@ export default function ProfileIcon({ fetchedUser }: props) {
       <div className={styles.profile_pic}>
         {fetchedUser ? (
           <>
-            <img src={iconURL ?? defaultIcon} alt='default' />
+            <img src={iconUrl} alt='default' />
             <input type='file' ref={fileInputRef} onChange={handleImgUpload} />
             <span className={styles.text}>Edit image</span>
           </>
