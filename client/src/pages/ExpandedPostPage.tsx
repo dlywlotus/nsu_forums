@@ -55,7 +55,7 @@ export default function ExpandedPostPage({ isEditing = false }: props) {
               />
               <CommentSection comments={data.comments} postId={data.post.ID} />
               <button className={styles.btn_back} onClick={navBack}>
-                <i className='fa-solid fa-arrow-left-long'></i>
+                <i className='fa-solid fa-arrow-left'></i>
               </button>
             </div>
           ) : (

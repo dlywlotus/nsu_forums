@@ -24,7 +24,7 @@
   position: absolute;
   top: 0.25rem;
   left: -2.75rem;
-  font-size: var(--fs-300);
+  font-size: 0.75rem;
 }
 
 .btn_back:hover {
