@@ -41,3 +41,10 @@
   cursor: pointer;
   z-index: 10;
 }
+
+@media (width < 765px) {
+  .profile_pic {
+    width: 150px;
+    height: 150px;
+  }
+}

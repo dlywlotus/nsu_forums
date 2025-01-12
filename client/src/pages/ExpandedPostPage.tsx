@@ -30,7 +30,7 @@ export default function ExpandedPostPage({ isEditing = false }: props) {
   };
 
   const { data, isFetching, isError } = useQuery({
-    queryKey: ["post"],
+    queryKey: ["post", Number(postId)],
     queryFn: fetchPost,
     enabled: userId !== null,
   });
@@ -46,7 +46,11 @@ export default function ExpandedPostPage({ isEditing = false }: props) {
             isExpanded={true}
             isEditing={isEditing}
           />
+
           <CommentSection comments={data.comments} postId={data.post.ID} />
+          <button className={styles.btn_back}>
+            <i className='fa-solid fa-arrow-left-long'></i>
+          </button>
         </div>
       )}
     </>

@@ -18,7 +18,12 @@ const queryClient = new QueryClient();
 
 const ThemeProvider = () => {
   useTheme();
-  return <Outlet />;
+  return (
+    <>
+      <Outlet />
+      <ToastContainer />
+    </>
+  );
 };
 
 const Layout = () => {
@@ -28,7 +33,6 @@ const Layout = () => {
       <div className='container'>
         <Outlet />
       </div>
-      <ToastContainer />
     </>
   );
 };
@@ -56,15 +60,15 @@ const router = createBrowserRouter([
             path: "edit/:postId",
             element: <PostExpandViewPage isEditing={true} />,
           },
-          {
-            path: "profile",
-            element: <ProfilePage />,
-          },
         ],
       },
       {
         path: "/auth",
         element: <AuthPage />,
+      },
+      {
+        path: "profile",
+        element: <ProfilePage />,
       },
     ],
   },

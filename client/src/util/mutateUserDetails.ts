@@ -21,7 +21,7 @@ const mutateUserDetails = (
       ...data,
       pages: data.pages.map(page => ({
         ...page,
-        posts: page.posts.map(post => {
+        posts: (page.posts ?? []).map(post => {
           let newPost = {
             ...post,
             [field]: newValue,

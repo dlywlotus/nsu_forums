@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
 const useTheme = () => {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
   useEffect(() => {
-    document.querySelector("body")?.setAttribute("data-theme", theme);
+    document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 
   return { theme, setTheme };

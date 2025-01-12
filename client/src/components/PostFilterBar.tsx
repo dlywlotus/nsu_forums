@@ -17,8 +17,8 @@ const categoryOptions = [
 ];
 
 const sortByOptions = [
-  { value: "likes", label: "likes" },
   { value: "new", label: "new" },
+  { value: "likes", label: "likes" },
 ];
 
 export default function PostFilterBar({ filterRef, refetch }: props) {

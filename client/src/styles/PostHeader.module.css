@@ -18,6 +18,7 @@
 .categoryAndTime {
   display: flex;
   gap: 0.25rem;
+  color: var(--clr-accent-400);
 }
 
 .category {

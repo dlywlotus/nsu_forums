@@ -37,6 +37,7 @@ export default function PostList({
   selfPosted,
 }: props) {
   const { ref } = useInView({
+    rootMargin: "0px 0px 500px 0px",
     onChange: (inView, _) => {
       if (inView && hasNextPage) {
         fetchNexPage();

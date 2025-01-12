@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import TextareaAutosize from "react-textarea-autosize";
 import getSession from "../util/getSession";
 import SelectMenu from "../components/SelectMenu";
+import showError from "../util/showError";
 
 //Zod schema
 const formSchema = z.object({
@@ -37,7 +38,6 @@ export default function CreatePostModal() {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-    setError,
   } = useForm({
     resolver: zodResolver(formSchema),
   });
@@ -68,10 +68,11 @@ export default function CreatePostModal() {
       );
 
       if (!res.ok) throw new Error();
-
-      navigate("/");
     } catch (error) {
-      setError("root", { type: "server", message: "Failed to create post" });
+      console.log(error);
+      showError("Error creating post");
+    } finally {
+      navigate("/");
     }
   };
 
@@ -100,12 +101,9 @@ export default function CreatePostModal() {
         <div className={styles.label}>Category</div>
         <SelectMenu options={categoryOptions} onChange={onSelect} />
 
-        <div className={styles.bottom_row}>
-          <button type='submit' disabled={isSubmitting}>
-            {isSubmitting ? "...Posting" : "Create"}
-          </button>
-          {errors.root && <p className={styles.err}>{errors.root.message}</p>}
-        </div>
+        <button type='submit' disabled={isSubmitting}>
+          {isSubmitting ? "...Posting" : "Create"}
+        </button>
       </form>
     </div>
   );

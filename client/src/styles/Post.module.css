@@ -32,7 +32,7 @@
   transition: transform 0.2s ease-in-out;
 }
 
-.container[data-expanded="false"][data-static="true"]:hover {
+.container[data-expanded="false"][data-editable="false"]:hover {
   transform: translate(6px, -6px);
 }
 
@@ -40,15 +40,16 @@
   font-weight: var(--fw-bold);
   font-size: var(--fs-500);
   margin-bottom: 0.25rem;
+  overflow-wrap: break-word;
 }
 
 .post_body {
   margin-bottom: 0.5rem;
-  display: -webkit-box; /* Use flexbox for multi-line text handling */
 }
 
 .container[data-expanded="false"] .post_body {
-  -webkit-box-orient: vertical; /* Specify the box orientation */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-line-clamp: 4;
@@ -65,7 +66,7 @@
   }
 
   .container[data-expanded="false"] .post_body {
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
   }
 }

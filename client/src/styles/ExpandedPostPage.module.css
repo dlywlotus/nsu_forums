@@ -2,4 +2,21 @@
   border: 1px solid var(--clr-neutral-700);
   border-radius: 0.75rem;
   background-color: var(--clr-modal);
+  position: relative;
+}
+
+.btn_back {
+  background-color: var(--clr-modal);
+  color: var(--clr-text);
+  border: 1px solid var(--clr-neutral-700);
+  border-radius: 50%;
+  height: 1.75rem;
+  width: 1.75rem;
+  transition: background-color 0.3s ease;
+  display: grid;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: -2.75rem;
+  font-size: var(--fs-300);
 }

@@ -3,6 +3,7 @@
   justify-content: space-between;
   padding: 0 1rem 0.5rem 1rem;
   font-size: var(--fs-300);
+  margin-top: 0.75rem;
 }
 
 .container > * {
@@ -63,6 +64,8 @@
 @media (width < 850px) {
   .container {
     flex-direction: column;
+    padding: 0;
+    margin-top: 0;
   }
 
   .filter_group {

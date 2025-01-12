@@ -31,11 +31,11 @@ const useMutateExpandedPostLikes = () => {
         });
       }
     },
-    onMutate: async ({ isLiked }: mutationProps) => {
-      const previousData = queryClient.getQueryData(["post"]);
+    onMutate: async ({ postId, isLiked }: mutationProps) => {
+      const previousData = queryClient.getQueryData(["post", postId]);
 
       //Update the like count
-      queryClient.setQueryData(["post"], (data: data) => {
+      queryClient.setQueryData(["post", postId], (data: data) => {
         let newPost = {
           ...data.post,
           LikeCount: isLiked
@@ -51,8 +51,8 @@ const useMutateExpandedPostLikes = () => {
 
       return { previousData };
     },
-    onError: (err, _, context) => {
-      queryClient.setQueryData(["post"], context?.previousData);
+    onError: (err, { postId }, context) => {
+      queryClient.setQueryData(["post", postId], context?.previousData);
       console.log(err);
     },
   });

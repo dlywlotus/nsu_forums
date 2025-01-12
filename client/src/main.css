@@ -27,6 +27,19 @@
   --fs-900: 3.052rem;
 }
 
+/*THEME*/
+:root[data-theme="dark"] {
+  --clr-body: var(--clr-neutral-800);
+  --clr-text: var(--clr-neutral-200);
+  --clr-modal: var(--clr-neutral-900);
+}
+
+:root[data-theme="light"] {
+  --clr-body: var(--clr-neutral-200);
+  --clr-text: var(--clr-neutral-800);
+  --clr-modal: var(--clr-neutral-100);
+}
+
 /*
 1. Use a more-intuitive box-sizing model.
 */
@@ -103,26 +116,13 @@ h6 {
 /*style scrollbar*/
 :root {
   scrollbar-width: thin;
-  scrollbar-color: var(--clr-neutral-900) transparent;
-}
-
-/*THEME*/
-body[data-theme="dark"] {
-  --clr-body: var(--clr-neutral-800);
-  --clr-text: var(--clr-neutral-200);
-  --clr-modal: var(--clr-neutral-900);
-}
-
-body[data-theme="light"] {
-  --clr-body: var(--clr-neutral-200);
-  --clr-text: var(--clr-neutral-800);
-  --clr-modal: var(--clr-neutral-100);
+  scrollbar-color: var(--clr-text) transparent;
 }
 
 .container {
   width: min(800px, calc(100vw - 1.5rem));
-  padding-block: 1rem;
   margin: auto;
+  padding-block: 0.75rem;
 }
 
 /*React confirm alert styling*/
@@ -140,4 +140,10 @@ body[data-theme="light"] {
 
 .react-confirm-alert-body h1 {
   color: var(--clr-error) !important;
+}
+
+@media (width < 920px) {
+  .container {
+    width: calc(100vw - 1.5rem);
+  }
 }

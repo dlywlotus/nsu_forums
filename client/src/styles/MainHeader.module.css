@@ -8,8 +8,7 @@
   width: 100%;
   top: 0;
   z-index: 900;
-  height: 65px;
-  margin-bottom: 0.5rem;
+  height: 60px;
   border-bottom: 1px solid var(--clr-neutral-700);
 }
 

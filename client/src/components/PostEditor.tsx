@@ -56,7 +56,7 @@ export default function PostEditor({ postContent }: props) {
           },
         }
       );
-      queryClient.invalidateQueries({ queryKey: ["post"] });
+      queryClient.invalidateQueries({ queryKey: ["post", postContent.ID] });
       goToPost();
     } catch (error) {
       goToPost();

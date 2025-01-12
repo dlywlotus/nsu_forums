@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { useQueryClient } from "@tanstack/react-query";
 import { postData } from "../pages/ExpandedPostPage";
 import LoadingSpinner from "./LoadingSpinner";
+import showError from "../util/showError";
 
 type props = {
   postId: number;
@@ -46,9 +47,9 @@ export default function CommentBar({ postId, replyId }: props) {
       );
       return res.data.created_comment;
     },
-    onSuccess: commentData => {
+    onSuccess: (commentData, { postId }) => {
       //insert new parent/child comment into comments array
-      queryClient.setQueryData(["post"], (postData: postData) => {
+      queryClient.setQueryData(["post", postId], (postData: postData) => {
         let newComments = replyId
           ? postData.comments.map(c =>
               c.ID === replyId
@@ -64,6 +65,9 @@ export default function CommentBar({ postId, replyId }: props) {
           comments: newComments,
         };
       });
+    },
+    onError: () => {
+      showError("Error creating comment");
     },
   });
 
