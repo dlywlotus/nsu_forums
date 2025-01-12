@@ -33,8 +33,8 @@
   border: none;
   background-color: transparent;
   border-radius: 50%;
-  height: 1.75rem;
-  width: 1.75rem;
+  height: 2rem;
+  width: 2rem;
   transition: background-color 0.3s ease;
   display: grid;
   align-items: center;

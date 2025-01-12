@@ -194,7 +194,6 @@ func GetPost(c *gin.Context) {
 			}
 		}
 	}
-
 	c.JSON(200, gin.H{
 		"post":     post,
 		"comments": parentComments,

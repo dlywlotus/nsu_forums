@@ -1,5 +1,5 @@
 import styles from "../styles/ExpandedPostPage.module.css";
-import { useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import Post from "../components/Post";
 import axios from "axios";
@@ -20,6 +20,12 @@ type props = {
 export default function ExpandedPostPage({ isEditing = false }: props) {
   const { postId } = useParams();
   const { userId } = useUser();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const navBack = () => {
+    location.key === "default" ? navigate("/") : navigate(-1);
+  };
 
   const fetchPost = async () => {
     const res = await axios.get(
@@ -34,24 +40,28 @@ export default function ExpandedPostPage({ isEditing = false }: props) {
     queryFn: fetchPost,
     enabled: userId !== null,
   });
-
   return (
     <>
-      {isError && <div>Error loading post</div>}
+      {isError && <div>Error loading post 😢</div>}
       {isFetching && <LoadingSpinner isLoading={isFetching} />}
       {data && (
-        <div className={styles.container}>
-          <Post
-            postContent={data.post}
-            isExpanded={true}
-            isEditing={isEditing}
-          />
-
-          <CommentSection comments={data.comments} postId={data.post.ID} />
-          <button className={styles.btn_back}>
-            <i className='fa-solid fa-arrow-left-long'></i>
-          </button>
-        </div>
+        <>
+          {data?.post.ID !== 0 ? (
+            <div className={styles.container}>
+              <Post
+                postContent={data.post}
+                isExpanded={true}
+                isEditing={isEditing}
+              />
+              <CommentSection comments={data.comments} postId={data.post.ID} />
+              <button className={styles.btn_back} onClick={navBack}>
+                <i className='fa-solid fa-arrow-left-long'></i>
+              </button>
+            </div>
+          ) : (
+            <div>Post does not exist 😢</div>
+          )}
+        </>
       )}
     </>
   );
