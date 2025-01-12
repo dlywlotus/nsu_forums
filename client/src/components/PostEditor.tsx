@@ -98,7 +98,7 @@ export default function PostEditor({ postContent }: props) {
           Cancel
         </button>
         <button type='submit' disabled={isSubmitting}>
-          Save
+          {isSubmitting ? "Updating" : "Save"}
         </button>
       </div>
     </form>
