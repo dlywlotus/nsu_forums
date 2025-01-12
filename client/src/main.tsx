@@ -22,8 +22,8 @@ const ThemeProvider = () => {
   return (
     <SkeletonTheme
       baseColor='var(--clr-body)'
-      highlightColor='var(--clr-accent-400)'
-      duration={0.75}
+      highlightColor='var(--clr-highlight)'
+      duration={1}
     >
       <Outlet />
       <ToastContainer />

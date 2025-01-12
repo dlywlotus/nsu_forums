@@ -32,12 +32,14 @@
   --clr-body: var(--clr-neutral-800);
   --clr-text: var(--clr-neutral-200);
   --clr-modal: var(--clr-neutral-900);
+  --clr-highlight: var(--clr-neutral-700);
 }
 
 :root[data-theme="light"] {
   --clr-body: var(--clr-neutral-200);
   --clr-text: var(--clr-neutral-800);
   --clr-modal: var(--clr-neutral-100);
+  --clr-highlight: var(--clr-neutral-300);
 }
 
 /*

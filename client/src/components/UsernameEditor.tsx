@@ -55,7 +55,11 @@ export default function UsernameEditor({ fetchedUser }: props) {
     return (
       <Skeleton
         width={250}
-        style={{ marginBlock: "1.5rem 2rem", padding: "0.5rem" }}
+        style={{
+          marginBlock: "1.5rem 2rem",
+          padding: "0.5rem",
+          borderRadius: ".75rem",
+        }}
       />
     );
 
