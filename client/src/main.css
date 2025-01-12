@@ -121,12 +121,6 @@ h6 {
   scrollbar-color: var(--clr-text) transparent;
 }
 
-.container {
-  width: min(800px, calc(100vw - 1.5rem));
-  margin: auto;
-  padding-block: 0.75rem;
-}
-
 /*React confirm alert styling*/
 .react-confirm-alert-overlay {
   background: rgba(0, 0, 0, 0.1) !important;

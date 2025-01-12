@@ -8,12 +8,12 @@ import AuthPage from "./pages/AuthPage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { UserProvider } from "./Hooks/useUser";
 import MainHeader from "./components/MainHeader";
-import PostDashboardPage from "./components/PostDashboard";
 import useTheme from "./Hooks/useTheme";
 import ProfilePage from "./pages/ProfilePage";
 import CreatePostPage from "./pages/CreatePostPage";
 import { ToastContainer } from "react-toastify";
 import { SkeletonTheme } from "react-loading-skeleton";
+import Home from "./pages/Home";
 
 const queryClient = new QueryClient();
 
@@ -35,9 +35,7 @@ const Layout = () => {
   return (
     <>
       <MainHeader />
-      <div className='container'>
-        <Outlet />
-      </div>
+      <Outlet />
     </>
   );
 };
@@ -54,7 +52,7 @@ const router = createBrowserRouter([
         children: [
           {
             path: "/",
-            element: <PostDashboardPage />,
+            element: <Home />,
           },
           { path: "create", element: <CreatePostPage /> },
           {
@@ -65,15 +63,15 @@ const router = createBrowserRouter([
             path: "edit/:postId",
             element: <PostExpandViewPage isEditing={true} />,
           },
+          {
+            path: "profile",
+            element: <ProfilePage />,
+          },
         ],
       },
       {
         path: "/auth",
         element: <AuthPage />,
-      },
-      {
-        path: "profile",
-        element: <ProfilePage />,
       },
     ],
   },

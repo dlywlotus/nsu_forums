@@ -77,34 +77,36 @@ export default function CreatePostModal() {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.header}>Create post</div>
-      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-        <label htmlFor='title'>Title</label>
-        <TextareaAutosize
-          className={styles.title_input}
-          id='title'
-          minRows={1}
-          {...register("title")}
-        />
-        {errors.title && <p className={styles.err}>{errors.title.message}</p>}
+    <div className={styles.wrapper}>
+      <div className={styles.container}>
+        <div className={styles.header}>Create post</div>
+        <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+          <label htmlFor='title'>Title</label>
+          <TextareaAutosize
+            className={styles.title_input}
+            id='title'
+            minRows={1}
+            {...register("title")}
+          />
+          {errors.title && <p className={styles.err}>{errors.title.message}</p>}
 
-        <label htmlFor='body'>Body</label>
-        <TextareaAutosize
-          className={styles.body_input}
-          id='body'
-          minRows={5}
-          {...register("body")}
-        />
-        {errors.body && <p className={styles.err}>{errors.body.message}</p>}
+          <label htmlFor='body'>Body</label>
+          <TextareaAutosize
+            className={styles.body_input}
+            id='body'
+            minRows={5}
+            {...register("body")}
+          />
+          {errors.body && <p className={styles.err}>{errors.body.message}</p>}
 
-        <div className={styles.label}>Category</div>
-        <SelectMenu options={categoryOptions} onChange={onSelect} />
+          <div className={styles.label}>Category</div>
+          <SelectMenu options={categoryOptions} onChange={onSelect} />
 
-        <button type='submit' disabled={isSubmitting}>
-          {isSubmitting ? "...Posting" : "Create"}
-        </button>
-      </form>
+          <button type='submit' disabled={isSubmitting}>
+            {isSubmitting ? "...Posting" : "Create"}
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

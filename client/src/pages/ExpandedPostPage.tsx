@@ -41,7 +41,7 @@ export default function ExpandedPostPage({ isEditing = false }: props) {
     enabled: userId !== null,
   });
   return (
-    <>
+    <div className={styles.wrapper}>
       {isError && <div>Error loading post 😢</div>}
       {isFetching && <LoadingSpinner isLoading={isFetching} />}
       {data && (
@@ -63,6 +63,6 @@ export default function ExpandedPostPage({ isEditing = false }: props) {
           )}
         </>
       )}
-    </>
+    </div>
   );
 }

@@ -8,7 +8,6 @@ import AuthError from "./AuthError";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import LoadingSpinner from "./LoadingSpinner";
 
 // Infer form schema type
 type FormData = {
@@ -118,14 +117,13 @@ export default function AuthModal() {
         className={styles.btn_authenticate}
         disabled={isSubmitting}
       >
-        {isLogin ? "Log in" : "Sign up"}
+        {isSubmitting ? "Logging in" : isLogin ? "Log in" : "Sign up"}
       </button>
       <AuthCallToAction
         isLogin={isLogin}
         setIsLogin={setIsLogin}
         reset={reset}
       />
-      {isSubmitting && <LoadingSpinner isLoading={isSubmitting} />}
     </form>
   );
 }
