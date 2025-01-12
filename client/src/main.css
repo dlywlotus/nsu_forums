@@ -9,14 +9,14 @@
   --clr-neutral-800: #1f1f1f; /* For text/body */
   --clr-neutral-900: #121212; /* For modals/inputs */
 
-  --clr-error: #e63946;
+  --clr-error: #f0625d;
+  --clr-success: #81c784;
 
   --ff-primary: "Poppins", sans-serif;
   --ff-numbers: "Roboto Mono", serif;
 
   --fw-regular: 400;
   --fw-bold: 700;
-  --fw-black: 900;
 
   --fs-300: 0.8rem;
   --fs-400: 1rem;
@@ -127,8 +127,9 @@ h6 {
   z-index: 1000 !important;
   backdrop-filter: blur(4px);
 }
+
 .react-confirm-alert-body {
-  font: inherit !important;
+  font-family: var(--ff-primary) !important;
   background-color: var(--clr-text) !important;
   color: var(--clr-body) !important;
   border-radius: 0.75rem !important;
@@ -136,6 +137,8 @@ h6 {
 
 .react-confirm-alert-body h1 {
   color: var(--clr-error) !important;
+  font-weight: var(--fw-bold) !important;
+  font-size: var(--fs-700);
 }
 
 @media (width < 920px) {

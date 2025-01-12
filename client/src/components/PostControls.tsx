@@ -3,7 +3,10 @@ import { useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import getSession from "../util/getSession";
 import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 import { useNavigate } from "react-router-dom";
+import showError from "../util/showError";
+import { toast } from "react-toastify";
 
 type props = {
   postId: number;
@@ -17,7 +20,7 @@ export default function PostControls({ postId }: props) {
     try {
       const { token } = await getSession();
       await axios.delete(
-        `http://localhost:3000/auth_req/delete_post/${postId}`,
+        `${import.meta.env.VITE_SERVER_API_URL}/auth_req/delete_post/${postId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -25,6 +28,13 @@ export default function PostControls({ postId }: props) {
         }
       );
       queryClient.refetchQueries({ queryKey: ["posts"] });
+      toast.success("Post deleted successfully", {
+        autoClose: 5000,
+        theme: "colored",
+        style: {
+          backgroundColor: "var(--clr-success)",
+        },
+      });
     } catch (error) {
       console.error(error);
     }
@@ -32,6 +42,7 @@ export default function PostControls({ postId }: props) {
 
   const editPost = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.stopPropagation();
+    showError("helo");
     navigate(`/edit/${postId}`);
   };
 
