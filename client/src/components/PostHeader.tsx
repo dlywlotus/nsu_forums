@@ -3,6 +3,9 @@ import { post } from "./PostList";
 import defaultIcon from "../images/defaultProfileIcon.png";
 import { formatDistanceToNowStrict } from "date-fns";
 import isBlobUrl from "../util/isBlobURL";
+import { useState } from "react";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 type props = {
   postContent: post;
@@ -16,6 +19,7 @@ const icon: Record<string, string> = {
 };
 
 export default function PostHeader({ postContent }: props) {
+  const [isLoaded, setIsLoaded] = useState(false);
   const timeElapsed = formatDistanceToNowStrict(
     new Date(postContent.CreatedAt)
   );
@@ -29,7 +33,15 @@ export default function PostHeader({ postContent }: props) {
 
   return (
     <section className={styles.post_upper}>
-      <img src={iconURl} alt='user_icon'></img>
+      <div className={styles.icon}>
+        {!isLoaded && <Skeleton circle={true} width={32} height={32} />}
+        <img
+          src={iconURl}
+          onLoad={() => setIsLoaded(true)}
+          alt='user_icon'
+          data-loaded={isLoaded}
+        ></img>
+      </div>
       <div className={styles.post_details}>
         <div className={styles.categoryAndTime}>
           <div className={styles.category}>

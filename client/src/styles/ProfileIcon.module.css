@@ -9,11 +9,11 @@
   border-radius: 50%;
 }
 
-.profile_pic:hover span {
+.profile_pic:hover .text {
   opacity: 1;
 }
 
-.profile_pic span {
+.profile_pic .text {
   position: absolute;
   color: var(--clr-neutral-100);
   font-weight: var(--fw-bold);

@@ -11,17 +11,22 @@ import { useMutation } from "@tanstack/react-query";
 import mutateUserDetails from "../util/mutateUserDetails";
 import { useUser } from "../Hooks/useUser";
 import showError from "../util/showError";
+import { fetchedUser } from "./UserDetails";
+import Skeleton from "react-loading-skeleton";
+import { useMediaQuery } from "react-responsive";
 
 type props = {
-  iconURL: string | null;
+  fetchedUser: fetchedUser | undefined;
 };
 
-export default function ProfileIcon({ iconURL }: props) {
+export default function ProfileIcon({ fetchedUser }: props) {
+  const iconURL = fetchedUser?.ProfilePic;
   const { userId } = useUser();
   const queryClient = useQueryClient();
   const fileInputRef = useRef<any>(null);
   const [uploadedImg, setUploadedImg] = useState<any>(null);
   const [isCropping, setIsCropping] = useState(false);
+  const isMobile = useMediaQuery({ query: "(max-width: 765px)" });
 
   const handleImgUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0] ?? null;
@@ -103,11 +108,20 @@ export default function ProfileIcon({ iconURL }: props) {
   return (
     <>
       <div className={styles.profile_pic}>
-        <img src={iconURL ?? defaultIcon} alt='default' />
-        <input type='file' ref={fileInputRef} onChange={handleImgUpload} />
-        <span>Edit image</span>
+        {fetchedUser ? (
+          <>
+            <img src={iconURL ?? defaultIcon} alt='default' />
+            <input type='file' ref={fileInputRef} onChange={handleImgUpload} />
+            <span className={styles.text}>Edit image</span>
+          </>
+        ) : (
+          <Skeleton
+            circle={true}
+            width={isMobile ? 150 : 200}
+            height={isMobile ? 150 : 200}
+          />
+        )}
       </div>
-
       {isCropping && (
         <ImageCropper imageSrc={uploadedImg} onCropComplete={onCropComplete} />
       )}

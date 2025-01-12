@@ -13,16 +13,21 @@ import useTheme from "./Hooks/useTheme";
 import ProfilePage from "./pages/ProfilePage";
 import CreatePostPage from "./pages/CreatePostPage";
 import { ToastContainer } from "react-toastify";
+import { SkeletonTheme } from "react-loading-skeleton";
 
 const queryClient = new QueryClient();
 
 const ThemeProvider = () => {
-  useTheme();
+  useTheme(); //dark / light mode
   return (
-    <>
+    <SkeletonTheme
+      baseColor='var(--clr-body)'
+      highlightColor='var(--clr-accent-400)'
+      duration={0.75}
+    >
       <Outlet />
       <ToastContainer />
-    </>
+    </SkeletonTheme>
   );
 };
 

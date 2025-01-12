@@ -4,6 +4,7 @@ import UsernameEditor from "./UsernameEditor";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { useUser } from "../Hooks/useUser";
+
 type props = {};
 
 export type fetchedUser = {
@@ -34,12 +35,8 @@ export default function UserDetails({}: props) {
 
   return (
     <section className={styles.user_details}>
-      {fetchedUser && (
-        <>
-          <ProfileIcon iconURL={fetchedUser.ProfilePic} />
-          <UsernameEditor username={fetchedUser.Username} />
-        </>
-      )}
+      <ProfileIcon fetchedUser={fetchedUser} />
+      <UsernameEditor fetchedUser={fetchedUser} />
     </section>
   );
 }

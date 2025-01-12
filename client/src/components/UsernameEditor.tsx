@@ -5,9 +5,11 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import LoadingSpinner from "./LoadingSpinner";
 import useMutateUsername from "../Hooks/useMutateUsername";
+import { fetchedUser } from "./UserDetails";
+import Skeleton from "react-loading-skeleton";
 
 type props = {
-  username: string;
+  fetchedUser: fetchedUser | undefined;
 };
 
 //Zod schema
@@ -21,7 +23,8 @@ const formSchema = z.object({
 // Infer form schema type
 type FormData = z.infer<typeof formSchema>;
 
-export default function UsernameEditor({ username }: props) {
+export default function UsernameEditor({ fetchedUser }: props) {
+  const username = fetchedUser?.Username;
   const [isEditing, setIsEditing] = useState(false);
   const mutation = useMutateUsername();
 
@@ -48,6 +51,14 @@ export default function UsernameEditor({ username }: props) {
     });
   };
 
+  if (!fetchedUser)
+    return (
+      <Skeleton
+        width={250}
+        style={{ marginBlock: "1.5rem 2rem", padding: "0.5rem" }}
+      />
+    );
+
   return (
     <>
       {isEditing ? (
@@ -68,6 +79,7 @@ export default function UsernameEditor({ username }: props) {
           </button>
         </div>
       )}
+
       {isSubmitting && <LoadingSpinner isLoading={isSubmitting} />}
     </>
   );
