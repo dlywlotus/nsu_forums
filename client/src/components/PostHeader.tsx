@@ -2,7 +2,7 @@ import styles from "../styles/PostHeader.module.css";
 import { post } from "./PostList";
 import defaultIcon from "../images/defaultProfileIcon.png";
 import { formatDistanceToNowStrict } from "date-fns";
-import isBlobUrl from "../util/isBlobURL";
+import isBlobUrl from "../util/isBlobUrl";
 import { useState } from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
