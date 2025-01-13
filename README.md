@@ -1,4 +1,4 @@
-# Set up
+# NSU FORUMS - a cvwo project
 
 ## client/env variables
 
