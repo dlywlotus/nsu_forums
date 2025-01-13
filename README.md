@@ -4,9 +4,9 @@ By: Dylan Low Yok Wee
 
 Currently hosted on: https://nsu-forums.onrender.com
 
-## Tester account:
-email: tester1@gmail.com
-password: 123123
+## Tester account
+* email: tester1@gmail.com
+* password: 123123
 
 ## How to set up 
 
