@@ -1,4 +1,4 @@
-# NSU FORUMS - a CVWO project by Dylan Low Yok Wee
+# NSU FORUMS - by Dylan Low Yok Wee
 
 
 ## client/env variables
