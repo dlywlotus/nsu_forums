@@ -2,6 +2,8 @@
 
 By: Dylan Low Yok Wee
 
+Currently hosted on: https://nsu-forums.onrender.com/
+
 ## How to set up 
 
 ### Step 1 Supabase account
