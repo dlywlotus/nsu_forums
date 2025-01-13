@@ -1,5 +1,5 @@
 import styles from "../styles/ExpandedPostPage.module.css";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import Post from "../components/Post";
 import axios from "axios";
@@ -7,6 +7,7 @@ import { useUser } from "../Hooks/useUser";
 import CommentSection, { comment } from "../components/CommentSection";
 import { post } from "../components/PostList";
 import LoadingSpinner from "../components/LoadingSpinner";
+import { useQueryClient } from "@tanstack/react-query";
 
 export type postData = {
   post: post;
@@ -21,10 +22,11 @@ export default function ExpandedPostPage({ isEditing = false }: props) {
   const { postId } = useParams();
   const { userId } = useUser();
   const navigate = useNavigate();
-  const location = useLocation();
+  const queryClient = useQueryClient();
 
   const navBack = () => {
-    location.key === "default" ? navigate("/") : navigate(-1);
+    navigate("/");
+    queryClient.removeQueries({ queryKey: ["posts"] });
   };
 
   const fetchPost = async () => {

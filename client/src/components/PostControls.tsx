@@ -5,7 +5,6 @@ import getSession from "../util/getSession";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import { useNavigate } from "react-router-dom";
-import showError from "../util/showError";
 import { toast } from "react-toastify";
 
 type props = {
@@ -42,7 +41,6 @@ export default function PostControls({ postId }: props) {
 
   const editPost = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.stopPropagation();
-    showError("helo");
     navigate(`/edit/${postId}`);
   };
 
