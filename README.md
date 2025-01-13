@@ -10,13 +10,13 @@ Create a supabase account and create a new project (free)
 ### Step 2 Environment variables
 Create a .env file in both client and server dirs and add the following into each file
 
-### client/env variables
+#### client/env variables
 
 * VITE_SUPABASE_URL= "->PROJECT_SETTINGS->API->PROJECT_URL"
 * VITE_SUPABASE_ANON_KEY= "->PROJECT_SETTINGS->PROJECT_API_KEYS"
 * VITE_SERVER_API_URL= URL of hosted backend OR http://localhost:3000 if self hosted
 
-### server/env variables
+#### server/env variables
 
 * PORT=3000
 * DB_URL="TOP_NAV->CONNECT->SESSION_POOLER"
