@@ -1,4 +1,6 @@
-# NSU FORUMS - by Dylan Low Yok Wee
+# NSU FORUMS 
+
+Made by: Dylan Low Yok Wee
 
 
 ## client/env variables
