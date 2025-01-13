@@ -1,20 +1,18 @@
 import { useRef, useState } from "react";
 import getCroppedImageBlob from "../util/getCroppedImageBlob";
-import defaultIcon from "../images/defaultProfileIcon.png";
 import ImageCropper from "../components/ImageCropper";
 import supabase from "../supabase";
 import styles from "../styles/ProfileIcon.module.css";
 import axios from "axios";
 import getSession from "../util/getSession";
-import { useQueryClient } from "@tanstack/react-query";
-import { useMutation } from "@tanstack/react-query";
+import { useQueryClient, useMutation } from "@tanstack/react-query";
 import mutateUserDetails from "../util/mutateUserDetails";
 import { useUser } from "../Hooks/useUser";
 import showError from "../util/showError";
 import { fetchedUser } from "./UserDetails";
 import Skeleton from "react-loading-skeleton";
 import { useMediaQuery } from "react-responsive";
-import isBlobUrl from "../util/isBlobUrl";
+import getIcon from "../util/getIcon";
 
 type props = {
   fetchedUser: fetchedUser | undefined;
@@ -27,12 +25,6 @@ export default function ProfileIcon({ fetchedUser }: props) {
   const [uploadedImg, setUploadedImg] = useState<any>(null);
   const [isCropping, setIsCropping] = useState(false);
   const isMobile = useMediaQuery({ query: "(max-width: 765px)" });
-  const imgUrl = fetchedUser?.ProfilePic;
-  const iconUrl = imgUrl
-    ? isBlobUrl(imgUrl)
-      ? imgUrl
-      : `${imgUrl}?date=${Date.now()}`
-    : defaultIcon;
 
   const handleImgUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0] ?? null;
@@ -51,26 +43,33 @@ export default function ProfileIcon({ fetchedUser }: props) {
   const mutateProfilePic = async (imageBlob: Blob) => {
     const { token } = await getSession();
 
-    //upload new image / overwrite old one to supabase storage
+    //delete old image from storage if it exists
+    if (fetchedUser?.ProfilePic) {
+      const { error } = await supabase.storage
+        .from("profile_icons")
+        .remove([fetchedUser?.ProfilePic]);
+
+      if (error) {
+        throw new Error(error.message);
+      }
+    }
+
+    const newImageName = `User_${userId}_${Date.now()}.jpeg`;
+
+    //upload new image to storage
     const { error: storageError } = await supabase.storage
       .from("profile_icons")
-      .upload(`User_${userId}.jpg`, imageBlob, {
-        cacheControl: "0",
-        upsert: true, // Allow overwriting the existing image
+      .upload(newImageName, imageBlob, {
+        cacheControl: "31536000",
       });
 
     if (storageError) throw new Error(storageError.message);
 
-    //get imageURL
-    const imageURL = supabase.storage
-      .from("profile_icons")
-      .getPublicUrl(`User_${userId}.jpg`).data.publicUrl;
-
-    //store image url in db
+    //store image url in users table in database
     await axios.put(
       `${import.meta.env.VITE_SERVER_API_URL}/auth_req/edit_user/${userId}`,
       {
-        profilePic: imageURL,
+        profilePic: newImageName,
       },
       {
         headers: {
@@ -116,7 +115,7 @@ export default function ProfileIcon({ fetchedUser }: props) {
       <div className={styles.profile_pic}>
         {fetchedUser ? (
           <>
-            <img src={iconUrl} alt='default' />
+            <img src={getIcon(fetchedUser.ProfilePic)} alt='default' />
             <input type='file' ref={fileInputRef} onChange={handleImgUpload} />
             <span className={styles.text}>Edit image</span>
           </>

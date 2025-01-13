@@ -5,9 +5,10 @@ const getCroppedImageBlob = (imageSrc: any, crop: any) => {
     image.onload = () => {
       const canvas = document.createElement("canvas");
       const context = canvas.getContext("2d");
-
-      canvas.width = crop.width;
-      canvas.height = crop.height;
+      const targetWidth = 200;
+      const targetHeight = 200;
+      canvas.width = targetWidth;
+      canvas.height = targetHeight;
 
       context?.drawImage(
         image,
@@ -17,8 +18,8 @@ const getCroppedImageBlob = (imageSrc: any, crop: any) => {
         crop.height,
         0,
         0,
-        crop.width,
-        crop.height
+        targetWidth,
+        targetHeight
       );
 
       canvas.toBlob(blob => {
@@ -27,7 +28,7 @@ const getCroppedImageBlob = (imageSrc: any, crop: any) => {
         } else {
           resolve(blob);
         }
-      }, "image/jpg");
+      }, "image/jpeg");
     };
 
     image.onerror = error => reject(error);

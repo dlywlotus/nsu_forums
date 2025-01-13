@@ -3,7 +3,7 @@ import styles from "../styles/Comment.module.css";
 import { comment } from "./CommentSection";
 import { formatDistanceToNowStrict } from "date-fns";
 import CommentBar from "./CommentBar";
-import defaultIcon from "../images/defaultProfileIcon.png";
+import getIcon from "../util/getIcon";
 
 type props = {
   commentData: comment;
@@ -17,7 +17,7 @@ export default function Comment({ commentData }: props) {
 
   return (
     <div className={styles.container}>
-      <img src={commentData.ProfilePic ?? defaultIcon} alt='icon' />
+      <img src={getIcon(commentData.ProfilePic)} alt='icon' />
       <div className={styles.main_content}>
         <div className={styles.header}>
           <div className={styles.nameAndTime}>
