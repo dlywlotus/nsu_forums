@@ -1,10 +1,13 @@
-# Set up
+# NSU FORUMS 
+
+By: Dylan Low Yok Wee
+
 
 ## client/env variables
 
 * VITE_SUPABASE_URL= "->PROJECT_SETTINGS->API->PROJECT_URL"
 * VITE_SUPABASE_ANON_KEY= "->PROJECT_SETTINGS->PROJECT_API_KEYS"
-* VITE_SERVER_API_URL= url of hosted backend or localhost:PORT
+* VITE_SERVER_API_URL= backend url
 
 ## server/env variables
 
