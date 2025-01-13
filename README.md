@@ -2,7 +2,7 @@
 
 By: Dylan Low Yok Wee
 
-Currently hosted on: https://nsu-forums.onrender.com/
+Currently hosted on: https://nsu-forums.onrender.com
 
 ## How to set up 
 
