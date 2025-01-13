@@ -11,7 +11,7 @@ import (
 )
 
 func init() {
-	// Un-comment this if not hosting on localhost
+	// Un-comment this if hosting on localhost
 	// initialisers.LoadEnvVariables()
 	initialisers.ConnectToDb()
 }
