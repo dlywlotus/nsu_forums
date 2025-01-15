@@ -5,6 +5,7 @@ By: Dylan Low Yok Wee
 Currently hosted on: https://nsu-forums.onrender.com
 
 ## Tester account
+* Kindly log in to test out most of the features
 * Email: tester1@gmail.com
 * Password: 123123
 
