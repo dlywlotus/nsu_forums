@@ -8,6 +8,7 @@ import AuthError from "./AuthError";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import PulseLoader from "react-spinners/PulseLoader";
 
 // Infer form schema type
 type FormData = {
@@ -117,7 +118,18 @@ export default function AuthModal() {
         className={styles.btn_authenticate}
         disabled={isSubmitting}
       >
-        {isSubmitting ? "Logging in" : isLogin ? "Log in" : "Sign up"}
+        {isSubmitting ? (
+          <PulseLoader
+            loading={isSubmitting}
+            size={12}
+            cssOverride={{ color: "var(--clr-text)", marginTop: ".5rem" }}
+            speedMultiplier={1}
+          />
+        ) : isLogin ? (
+          "Log in"
+        ) : (
+          "Sign up"
+        )}
       </button>
       <AuthCallToAction
         isLogin={isLogin}
