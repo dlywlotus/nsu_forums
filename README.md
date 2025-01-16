@@ -35,7 +35,7 @@ Create a .env file in both client and server dirs and add the following into eac
 * 
 #### server/env variables
 * PORT=3000
-* DB_URL="TOP_NAV->CONNECT->SESSION_POOLER"
+* DB_URL="TOP_NAV->CONNECT->SESSION_POOLER" (rmb to fill in ur database password)
 * SUPABASE_JWT_SECRET="->PROJECT_SETTINGS->API->JWT_SETTINGS"
 
 ### Step 5 Migrate schema tables
