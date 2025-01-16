@@ -31,7 +31,7 @@ Create a .env file in both client and server dirs and add the following into eac
 
 ### Step 3 Migrate schema tables
 Next, populate the database with the schema tables defined in server/models/models.go.
-To migrate the tables, cd into the server dir and run "run go migrate/migrate.go".
+To migrate the tables, cd into the server dir and run "go run migrate/migrate.go".
 
 ### Step 4 Start commands
 To start front end, "cd client" and "npm run dev".
