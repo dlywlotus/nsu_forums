@@ -26,7 +26,7 @@ Currently hosted on: https://nsu-forums.onrender.com
 * Leave the "Policy definition" as is, then click on "Review" and finally "Save policy"
 
 ### Step 4 Environment variables
-Create a .env file in both client and server dirs and add the following into each file.
+* Create a .env file in both client and server dirs and add the following into each file.
 
 #### client/env variables
 * VITE_SUPABASE_URL= "->PROJECT_SETTINGS->API->PROJECT_URL"
