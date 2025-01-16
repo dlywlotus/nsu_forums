@@ -33,9 +33,15 @@ Create a .env file in both client and server dirs and add the following into eac
 Next, populate the database with the schema tables defined in server/models/models.go.
 To migrate the tables, cd into the server dir and run "go run migrate/migrate.go".
 
+### Step 4 Un-comment initializer
+Navigate to server/main.go and un-comment "initialisers.LoadEnvVariables()" if running on local host.
+If you choose to host the server on railway for example, leave it commented and add ur env variables in your host provider's dashboard. It should be usually under environment.
+
 ### Step 4 Start commands
-To start front end, "cd client" then run "npm i" and "npm run dev".
-To start back end, "cd server" and "go run main.go".
+#### Front end
+cd client -> npm i -> npm run dev
+#### Back end
+cd server -> go run main.go
 
 
 
