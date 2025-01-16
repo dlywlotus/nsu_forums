@@ -17,14 +17,13 @@ Currently hosted on: https://nsu-forums.onrender.com
 ### Step 2 Disable confirm email
 * Navigate to homepage -> taskbar -> authentication -> providers -> email
 * Click on email and untoggle confirm email.
-* From the storage page, under configuration, click on policies.
-* Create a new policy for profile_icons and select "For full customization"
-* Name the policy anything, for allowed operations check all the boxes and select "authenticated" for target roles
-* Leave the "Policy definition" as is, then click on "Review" and finally "Save policy"
 
 ### Step 3 Set up storage CDN
 * Navigate to homepage -> taskbar -> storage -> new bucket -> email
-* IMPORTANT: fill in the name of the bucket EXACTLY as "profile_icons" and TOGGLE PUBLIC BUCKET.
+* Fill in the name of the bucket EXACTLY as "profile_icons" and ACTIVATE "Public bucket".
+* Navigate to storage -> configuration -> policies -> profile_icons -> new policy -> for full customization.
+* Name the policy anything, for allowed operations check all the boxes and select "authenticated" for target roles.
+* Leave the "Policy definition" as is, then click on "Review" and finally "Save policy"
 
 ### Step 4 Environment variables
 Create a .env file in both client and server dirs and add the following into each file.
