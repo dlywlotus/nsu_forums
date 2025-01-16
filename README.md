@@ -32,7 +32,7 @@ Create a .env file in both client and server dirs and add the following into eac
 * VITE_SUPABASE_URL= "->PROJECT_SETTINGS->API->PROJECT_URL"
 * VITE_SUPABASE_ANON_KEY= "->PROJECT_SETTINGS->PROJECT_API_KEYS"
 * VITE_SERVER_API_URL= URL of hosted backend OR "http://localhost:3000" if self hosted
-* 
+  
 #### server/env variables
 * PORT=3000
 * DB_URL="TOP_NAV->CONNECT->SESSION_POOLER" (rmb to fill in ur database password)
