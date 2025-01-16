@@ -19,7 +19,7 @@ Currently hosted on: https://nsu-forums.onrender.com
 * Click on email and untoggle confirm email.
 
 ### Step 3 Set up storage CDN
-* Navigate to homepage -> taskbar -> storage -> new bucket -> email
+* Navigate to homepage -> taskbar -> storage -> new bucket
 * Fill in the name of the bucket EXACTLY as "profile_icons" and ACTIVATE "Public bucket".
 * Navigate to storage -> configuration -> policies -> profile_icons -> new policy -> for full customization.
 * Name the policy anything, for allowed operations check all the boxes and select "authenticated" for target roles.
