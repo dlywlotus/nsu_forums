@@ -31,7 +31,7 @@ Create a .env file in both client and server dirs and add the following into eac
 #### client/env variables
 * VITE_SUPABASE_URL= "->PROJECT_SETTINGS->API->PROJECT_URL"
 * VITE_SUPABASE_ANON_KEY= "->PROJECT_SETTINGS->PROJECT_API_KEYS"
-* VITE_SERVER_API_URL= URL of hosted backend OR http://localhost:3000 if self hosted
+* VITE_SERVER_API_URL= URL of hosted backend OR "http://localhost:3000" if self hosted
 * 
 #### server/env variables
 * PORT=3000
@@ -39,7 +39,7 @@ Create a .env file in both client and server dirs and add the following into eac
 * SUPABASE_JWT_SECRET="->PROJECT_SETTINGS->API->JWT_SETTINGS"
 
 ### Step 5 Migrate schema tables
-* Next, populate the database with the schema tables defined in server/models/models.go.
+* The next step is to populate the database with the schema tables defined in server/models/models.go.
 * To migrate the tables, cd into the server dir and run "go run migrate/migrate.go".
 
 ### Step 6 Un-comment initializer
