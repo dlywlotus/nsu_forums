@@ -34,7 +34,7 @@ Next, populate the database with the schema tables defined in server/models/mode
 To migrate the tables, cd into the server dir and run "go run migrate/migrate.go".
 
 ### Step 4 Start commands
-To start front end, "cd client" and "npm run dev".
+To start front end, "cd client" then run "npm i" and "npm run dev".
 To start back end, "cd server" and "go run main.go".
 
 
