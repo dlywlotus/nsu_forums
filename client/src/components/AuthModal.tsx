@@ -121,8 +121,9 @@ export default function AuthModal() {
         {isSubmitting ? (
           <PulseLoader
             loading={isSubmitting}
-            size={12}
-            cssOverride={{ color: "var(--clr-text)", marginTop: ".5rem" }}
+            size={8}
+            color='var(--clr-body)'
+            cssOverride={{ marginTop: ".1rem" }}
             speedMultiplier={1}
           />
         ) : isLogin ? (
