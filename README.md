@@ -49,7 +49,7 @@ Currently hosted on: https://nsu-forums.onrender.com
 ### Step 7 Start client
 * cd client -> npm i -> npm run dev
 ### Step 8 Start server
-* cd server -> go run main.go
+* cd server -> go mod tidy -> go run main.go
 
 
 
