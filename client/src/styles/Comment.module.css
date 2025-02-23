@@ -1,6 +1,5 @@
 .container {
   display: flex;
-  align-items: flex-start;
 }
 
 .container img {
@@ -9,10 +8,6 @@
   border-radius: 50%;
   object-fit: cover;
   margin: 0.5rem 0.5rem 0.5rem 0;
-}
-
-.main_content {
-  width: 100%;
 }
 
 .header {
@@ -32,7 +27,6 @@
 .btn_reply {
   border: none;
   background-color: transparent;
-
   transition: color 0.2s ease-in;
   font-size: var(--fs-300);
 }
@@ -48,4 +42,8 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+.comment_body {
+  word-break: break-word;
 }

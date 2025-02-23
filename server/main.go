@@ -12,7 +12,7 @@ import (
 
 func init() {
 	// Un-comment this if hosting on localhost
-	// initialisers.LoadEnvVariables()
+	initialisers.LoadEnvVariables()
 	initialisers.ConnectToDb()
 }
 
