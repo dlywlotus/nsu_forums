@@ -16,7 +16,7 @@ Currently hosted on: https://nsu-forums.onrender.com
 
 ### Step 2 Disable confirm email
 * Navigate to homepage -> taskbar -> authentication -> providers -> email
-* Click on email and untoggle confirm email.
+* Click on email and untoggle confirm email and save
 
 ### Step 3 Set up storage CDN
 * Navigate to homepage -> taskbar -> storage -> new bucket
