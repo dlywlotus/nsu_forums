@@ -40,6 +40,9 @@ export default function CreatePostModal() {
     formState: { errors, isSubmitting },
   } = useForm({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      category: categoryOptions[0].value,
+    },
   });
 
   const onSelect = (option: any, _: string) => {
@@ -75,7 +78,6 @@ export default function CreatePostModal() {
       navigate("/");
     }
   };
-
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
@@ -101,7 +103,6 @@ export default function CreatePostModal() {
 
           <div className={styles.label}>Category</div>
           <SelectMenu options={categoryOptions} onChange={onSelect} />
-
           <button type='submit' disabled={isSubmitting}>
             {isSubmitting ? "...Posting" : "Create"}
           </button>
