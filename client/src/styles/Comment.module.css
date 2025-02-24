@@ -10,6 +10,10 @@
   margin: 0.5rem 0.5rem 0.5rem 0;
 }
 
+.main_content {
+  width: 100%;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
