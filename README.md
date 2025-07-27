@@ -29,14 +29,14 @@ Currently hosted on: https://nsu-forums.onrender.com
 * Create a .env file in both client and server dirs and add the following into each file.
 
 #### client/env variables
-* VITE_SUPABASE_URL= "->PROJECT_SETTINGS->API->PROJECT_URL"
-* VITE_SUPABASE_ANON_KEY= "->PROJECT_SETTINGS->PROJECT_API_KEYS"
+* VITE_SUPABASE_URL= "->PROJECT_SETTINGS->Data API->PROJECT_URL"
+* VITE_SUPABASE_ANON_KEY= "->PROJECT_SETTINGS->API KEYS->Legacy API Keys(anon public)"
 * VITE_SERVER_API_URL= URL of hosted backend OR "http://localhost:3000" if self hosted
   
 #### server/env variables
 * PORT=3000
 * DB_URL="TOP_NAV->CONNECT->SESSION_POOLER" (rmb to fill in ur database password)
-* SUPABASE_JWT_SECRET="->PROJECT_SETTINGS->API->JWT_SETTINGS"
+* SUPABASE_JWT_SECRET="->PROJECT_SETTINGS->JWT Keys->Legacy JWT Secret"
 
 ### Step 5 Migrate schema tables
 * The next step is to populate the database with the schema tables defined in server/models/models.go.
